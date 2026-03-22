@@ -1,459 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="theme-color" content="#0A1428">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="PRAGYANAM">
-    <link rel="apple-touch-icon" href="logopng.webp">
-    <link rel="manifest" href="data:application/manifest+json,{%22name%22:%22PRAGYANAM%22,%22short_name%22:%22Pragyanam%22,%22start_url%22:%22.%22,%22display%22:%22standalone%22,%22background_color%22:%22%230A1428%22,%22theme_color%22:%22%230A1428%22,%22orientation%22:%22portrait%22,%22icons%22:[{%22src%22:%22logopng.webp%22,%22sizes%22:%22192x192%22,%22type%22:%22image/webp%22,%22purpose%22:%22any%22},{%22src%22:%22logopng.webp%22,%22sizes%22:%22512x512%22,%22type%22:%22image/webp%22,%22purpose%22:%22any%22}]}">
-    <title>PRAGYANAM</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&amp;family=Philosopher:wght@700&amp;display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #0A1428;
-            --accent: #00E5FF;
-            --glass: rgba(255, 255, 255, 0.08);
-            --text: #F0F4FF;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #0A1428 0%, #02070F 100%);
-            color: var(--text);
-            min-height: 100vh;
-            overflow-x: hidden;
-            padding-bottom: 80px;
-        }
-        
-        .header {
-            text-align: center;
-            padding: 30px 20px 20px;
-            background: linear-gradient(to bottom, rgba(10, 20, 40, 0.9), transparent);
-        }
-        
-        .logo {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 6px solid rgba(0, 229, 255, 0.3);
-            box-shadow: 0 0 40px rgba(0, 229, 255, 0.4);
-            animation: pulse 3s infinite ease-in-out;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-        
-        h1 {
-            font-family: 'Philosopher', sans-serif;
-            font-size: 2.8rem;
-            letter-spacing: 3px;
-            margin-top: 15px;
-            background: linear-gradient(90deg, #00E5FF, #FFFFFF);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .quote {
-            font-style: italic;
-            font-size: 1.1rem;
-            margin: 20px 30px;
-            opacity: 0.85;
-            text-align: center;
-        }
-        
-        .page {
-            display: none;
-            padding: 20px;
-            min-height: calc(100vh - 160px);
-        }
-        
-        .page.active {
-            display: block;
-            animation: fadeIn 0.4s ease forwards;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .glass {
-            background: var(--glass);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 24px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        }
-        
-        .card {
-            padding: 24px;
-            text-align: center;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .card:hover {
-            transform: translateY(-12px) scale(1.03);
-            box-shadow: 0 20px 40px rgba(0, 229, 255, 0.2);
-        }
-        
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 75px;
-            background: rgba(10, 20, 40, 0.95);
-            backdrop-filter: blur(20px);
-            border-top: 1px solid rgba(0, 229, 255, 0.2);
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            z-index: 1000;
-            padding: 8px 0;
-        }
-        
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: #8899AA;
-            font-size: 0.75rem;
-            transition: all 0.3s;
-            padding: 6px 12px;
-            border-radius: 16px;
-        }
-        
-        .nav-item.active {
-            color: #00E5FF;
-            transform: scale(1.1);
-        }
-        
-        .nav-item svg {
-            width: 28px;
-            height: 28px;
-            margin-bottom: 4px;
-        }
-        
-        .section-title {
-            font-family: 'Philosopher', sans-serif;
-            font-size: 1.8rem;
-            margin-bottom: 25px;
-            text-align: center;
-            color: #00E5FF;
-        }
-        
-        .class-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        
-        .class-card {
-            background: linear-gradient(135deg, rgba(0, 229, 255, 0.1), rgba(10, 20, 40, 0.6));
-            padding: 40px 20px;
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.4s;
-        }
-        
-        .class-card:hover {
-            background: linear-gradient(135deg, #00E5FF, #0A1428);
-            color: #0A1428;
-            transform: scale(1.05);
-        }
-        
-        .tab-bar {
-            display: flex;
-            background: rgba(255,255,255,0.05);
-            border-radius: 50px;
-            padding: 6px;
-            margin: 20px 0;
-        }
-        
-        .tab {
-            flex: 1;
-            padding: 14px;
-            text-align: center;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .tab.active {
-            background: #00E5FF;
-            color: #0A1428;
-            box-shadow: 0 4px 15px rgba(0, 229, 255, 0.4);
-        }
-        
-        .subjects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 16px;
-        }
-        
-        .subject-card {
-            padding: 20px 16px;
-            text-align: center;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .subject-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 60%;
-            height: 300%;
-            background: linear-gradient(135deg, transparent, rgba(255,255,255,0.3), transparent);
-            transform: rotate(30deg);
-            transition: all 0.6s;
-            opacity: 0;
-        }
-        
-        .subject-card:hover::before {
-            left: 120%;
-            opacity: 1;
-        }
-        
-        .premium-badge {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: linear-gradient(90deg, #FFD700, #FFAA00);
-            color: #0A1428;
-            font-size: 0.65rem;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-weight: 700;
-            box-shadow: 0 4px 10px rgba(255, 170, 0, 0.5);
-        }
-        
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(10, 20, 40, 0.95);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 2000;
-            padding: 20px;
-        }
-        
-        .modal-content {
-            width: 100%;
-            max-width: 460px;
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            border-radius: 28px;
-            padding: 30px;
-            border: 1px solid rgba(0, 229, 255, 0.3);
-            position: relative;
-            animation: modalPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-        
-        @keyframes modalPop {
-            0% { transform: scale(0.6); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-        
-        .close-btn {
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            width: 36px;
-            height: 36px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        
-        .notice-card {
-            margin-bottom: 16px;
-            padding: 20px;
-        }
-        
-        .quiz-container {
-            text-align: center;
-        }
-        
-        .option-btn {
-            width: 100%;
-            padding: 18px;
-            margin: 12px 0;
-            background: rgba(255,255,255,0.1);
-            border: 2px solid rgba(0, 229, 255, 0.3);
-            border-radius: 16px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .option-btn:hover {
-            background: rgba(0, 229, 255, 0.2);
-            border-color: #00E5FF;
-        }
-        
-        .option-btn.selected {
-            background: #00E5FF;
-            color: #0A1428;
-            border-color: #00E5FF;
-        }
-        
-        .progress-bar {
-            height: 6px;
-            background: #00E5FF;
-            border-radius: 10px;
-            margin: 20px 0;
-            transition: width 0.4s;
-        }
-    </style>
-</head>
-<body>
-    <!-- HOME PAGE -->
-    <div id="home" class="page active">
-        <div class="header">
-            <img src="logopng.webp" alt="PRAGYANAM Logo" class="logo">
-            <h1>PRAGYANAM</h1>
-            <p class="quote">"The only source of knowledge is experience. Start your journey today."</p>
-        </div>
-        
-        <div style="text-align:center; padding: 40px 20px; background: rgba(255,255,255,0.03); border-radius: 30px; margin: 20px;">
-            <h2 style="font-family: 'Philosopher', sans-serif; font-size: 1.6rem; color: #00E5FF;">Welcome, Future Leader</h2>
-            <p style="margin-top: 16px; opacity: 0.8; line-height: 1.6;">Class 9 &amp; 10 Assam Board • Free &amp; Premium Resources</p>
-            <div style="margin-top: 40px; font-size: 3rem; opacity: 0.1;">📚</div>
-        </div>
-    </div>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0f172a">
+<title>PRAGYANAM</title>
+<link rel="icon" href="logopng.webp"><!-- Google Fonts --><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Philosopher:wght@700&display=swap" rel="stylesheet"><style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background:linear-gradient(135deg,#0f172a,#1e293b);color:#fff}
+.page{display:none;padding:20px 15px 80px}
+.active{display:block}
 
-    <!-- NOTES PAGE -->
-    <div id="notes" class="page">
-        <h2 class="section-title">📖 Notes</h2>
-        
-        <!-- Class Selection -->
-        <div id="notes-class-select">
-            <div class="class-grid">
-                <div class="glass card class-card" onclick="loadClassContent('notes', 9)">
-                    <div style="font-size: 3rem; margin-bottom: 12px;">9</div>
-                    <div>Class 9</div>
-                </div>
-                <div class="glass card class-card" onclick="loadClassContent('notes', 10)">
-                    <div style="font-size: 3rem; margin-bottom: 12px;">10</div>
-                    <div>Class 10</div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Class Content View -->
-        <div id="notes-class-view" style="display: none;">
-            <div onclick="backToClassSelect('notes')" style="display: flex; align-items: center; gap: 8px; font-size: 1rem; margin-bottom: 20px; cursor: pointer; color: #00E5FF;">
-                ← Back to Classes
-            </div>
-            <h2 id="notes-class-title" class="section-title" style="text-align: left; font-size: 2rem;">Class 9 Notes</h2>
-            
-            <div class="tab-bar">
-                <div id="notes-tab-free" class="tab active" onclick="switchType('notes', 'free')">FREE</div>
-                <div id="notes-tab-premium" class="tab" onclick="switchType('notes', 'premium')">PREMIUM</div>
-            </div>
-            
-            <div id="notes-subjects-grid" class="subjects-grid"></div>
-        </div>
-    </div>
+/* Glass Card */
+.card{
+background:rgba(255,255,255,0.08);
+border-radius:20px;
+padding:15px;
+margin:10px 0;
+backdrop-filter:blur(10px);
+box-shadow:0 8px 20px rgba(0,0,0,0.3)
+}
 
-    <!-- VIDEOS PAGE -->
-    <div id="videos" class="page">
-        <h2 class="section-title">🎥 Videos</h2>
-        
-        <!-- Class Selection -->
-        <div id="videos-class-select">
-            <div class="class-grid">
-                <div class="glass card class-card" onclick="loadClassContent('videos', 9)">
-                    <div style="font-size: 3rem; margin-bottom: 12px;">9</div>
-                    <div>Class 9</div>
-                </div>
-                <div class="glass card class-card" onclick="loadClassContent('videos', 10)">
-                    <div style="font-size: 3rem; margin-bottom: 12px;">10</div>
-                    <div>Class 10</div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Class Content View -->
-        <div id="videos-class-view" style="display: none;">
-            <div onclick="backToClassSelect('videos')" style="display: flex; align-items: center; gap: 8px; font-size: 1rem; margin-bottom: 20px; cursor: pointer; color: #00E5FF;">
-                ← Back to Classes
-            </div>
-            <h2 id="videos-class-title" class="section-title" style="text-align: left; font-size: 2rem;">Class 9 Videos</h2>
-            
-            <div class="tab-bar">
-                <div id="videos-tab-free" class="tab active" onclick="switchType('videos', 'free')">FREE</div>
-                <div id="videos-tab-premium" class="tab" onclick="switchType('videos', 'premium')">PREMIUM</div>
-            </div>
-            
-            <div id="videos-subjects-grid" class="subjects-grid"></div>
-        </div>
-    </div>
+/* Header */
+.header{text-align:center;margin-bottom:20px}
+.header img{width:80px}
+.title{font-family:'Philosopher';font-size:28px;margin-top:10px}
+.quote{opacity:.8;margin-top:8px;font-size:14px}
 
-    <!-- NOTICE PAGE -->
-    <div id="notice" class="page">
-        <h2 class="section-title">🛎️ Notices</h2>
-        <div id="notices-list"></div>
-    </div>
+/* List */
+.list-item{padding:10px;border-bottom:1px solid rgba(255,255,255,0.1)}
 
-    <!-- EXAM PAGE -->
-    <div id="exam" class="page">
-        <div style="text-align: center; margin-top: 60px;">
-            <div class="glass" style="padding: 60px 30px; max-width: 380px; margin: 0 auto;">
-                <div style="font-size: 5rem; margin-bottom: 20px;">📝</div>
-                <h2 style="font-family: 'Philosopher', sans-serif; font-size: 2.4rem; margin-bottom: 16px;">Mock Tests</h2>
-                <p style="opacity: 0.8; margin-bottom: 40px;">Class 9 &amp; 10 • Assam Board Pattern</p>
-                <button onclick="startQuiz()" 
-                        style="background: linear-gradient(90deg, #00E5FF, #00B0FF); color: #0A1428; border: none; padding: 18px 60px; font-size: 1.3rem; font-weight: 700; border-radius: 50px; cursor: pointer; box-shadow: 0 10px 30px rgba(0, 229, 255, 0.5);">
-                    START QUIZ
-                </button>
-            </div>
-        </div>
-    </div>
+/* Button */
+.btn{
+background:#38bdf8;
+padding:12px;
+border:none;
+border-radius:10px;
+color:#000;
+font-weight:bold;
+width:100%;
+margin-top:10px
+}
 
-    <!-- BOTTOM NAV -->
-    <nav class="bottom-nav">
-        <div class="nav-item active" id="nav-home" onclick="switchPage('home')">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1v-5m10-10l2 2m-2-2v10a1 1 0 01-1 1v-5m-6 0a1 1 0 001-1v5" /></svg>
-            <span>Home</span>
-        </div>
-        <div class="nav-item" id="nav-notes" onclick="switchPage('notes')">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2" /></svg>
-            <span>Notes</span>
-        </div>
-        <div class="nav-item" id="nav-videos" onclick="switchPage('videos')">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 4.01V8" /></svg>
-            <span>Videos</span>
-        </div>
-        <div class="nav-item" id="nav-notice" onclick="switchPage('notice')">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 00-9-5.197V8.5" /></svg>
-            <span>Notice</span>
-        </div>
-        <div class="nav-item" id
+/* Bottom Nav */
+.nav{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+display:flex;
+justify-content:space-around;
+background:#020617;
+padding:10px 0
+}
+.nav button{
+background:none;border:none;color:#94a3b8;font-size:12px
+}
+.nav button.active{color:#38bdf8}
+</style></head><body><!-- HOME --><div id="home" class="page active">
+  <div class="header">
+    <img src="logopng.webp">
+    <div class="title">PRAGYANAM</div>
+    <div class="quote">"ज्ञान ही शक्ति है — Knowledge is Power"</div>
+  </div>
+</div><!-- NOTES --><div id="notes" class="page">
+  <div class="card">
+    <h3>Class 9 - Free</h3>
+    <div class="list
