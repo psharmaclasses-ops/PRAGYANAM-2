@@ -1,699 +1,150 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="theme-color" content="#0f172a">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="description" content="PRAGYANAM - Premium Educational Platform for Classes 9 & 10">
-    
-    <title>PRAGYANAM</title>
-    
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjogIlBSQUdZQU5BTSIsInNob3J0X25hbWUiOiAiUFJBR1lBTkFNIiwic3RhcnRfdXJsIjogIi4iLCJkaXNwbGF5IjogInN0YW5kYWxvbmUiLCJiYWNrZ3JvdW5kX2NvbG9yIjogIiMwZjE3MmEiLCJ0aGVtZV9jb2xvciI6ICIjM2I4MmY2IiwiaWNvbnMiOiBbeyJzcmMiOiAibG9nb3BuZy53ZWJwIiwic2l6ZXMiOiAiMTkyeDE5MiIsInR5cGUiOiAiaW1hZ2Uvd2VicCJ9LHsic3JjIjogImxvZ29wbmcud2VicCIsInNpemVzIjogIjUxMng1MTIiLCJ0eXBlIjogImltYWdlL3dlYnAifV19">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/webp" href="logopng.webp">
-    <link rel="apple-touch-icon" href="logopng.webp">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        :root {
-            --primary: #3b82f6;
-            --primary-dark: #1d4ed8;
-            --secondary: #8b5cf6;
-            --accent: #06b6d4;
-            --dark: #0f172a;
-            --darker: #020617;
-            --glass-bg: rgba(255, 255, 255, 0.08);
-            --glass-border: rgba(255, 255, 255, 0.18);
-            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            --text-primary: #f8fafc;
-            --text-secondary: #cbd5e1;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --danger: #ef4444;
-            --premium: #fbbf24;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-            background-attachment: fixed;
-            color: var(--text-primary);
-            min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
-        }
-        
-        /* Animated Background Elements */
-        .bg-shapes {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: -1;
-            pointer-events: none;
-        }
-        
-        .shape {
-            position: absolute;
-            filter: blur(80px);
-            opacity: 0.4;
-            animation: float 20s infinite ease-in-out;
-        }
-        
-        .shape-1 {
-            width: 400px;
-            height: 400px;
-            background: var(--primary);
-            border-radius: 50%;
-            top: -100px;
-            right: -100px;
-            animation-delay: 0s;
-        }
-        
-        .shape-2 {
-            width: 300px;
-            height: 300px;
-            background: var(--secondary);
-            border-radius: 50%;
-            bottom: -50px;
-            left: -50px;
-            animation-delay: 5s;
-        }
-        
-        .shape-3 {
-            width: 250px;
-            height: 250px;
-            background: var(--accent);
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation-delay: 10s;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -30px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
-        }
-        
-        /* Glassmorphism Base */
-        .glass {
-            background: var(--glass-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--glass-border);
-            box-shadow: var(--glass-shadow);
-        }
-        
-        .glass-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .glass-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-        
-        /* Layout */
-        .app-container {
-            max-width: 480px;
-            margin: 0 auto;
-            min-height: 100vh;
-            position: relative;
-            padding-bottom: 80px;
-        }
-        
-        /* Header Logo */
-        .header-logo {
-            text-align: center;
-            padding: 20px 20px 10px;
-        }
-        
-        .header-logo img {
-            width: 80px;
-            height: 80px;
-            object-fit: contain;
-            filter: drop-shadow(0 4px 12px rgba(59, 130, 246, 0.4));
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-        
-        .brand-name {
-            font-family: 'Philosopher', sans-serif;
-            font-size: 2.2rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6, #06b6d4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-top: 10px;
-            letter-spacing: 2px;
-            text-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
-        }
-        
-        /* Page Sections */
-        .page {
-            display: none;
-            padding: 20px;
-            animation: fadeIn 0.4s ease;
-        }
-        
-        .page.active {
-            display: block;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        /* Home Page */
-        .home-content {
-            text-align: center;
-            margin-top: 30px;
-        }
-        
-        .welcome-text {
-            font-size: 1.3rem;
-            color: var(--text-secondary);
-            margin-bottom: 30px;
-            font-weight: 300;
-        }
-        
-        .quote-card {
-            padding: 30px;
-            margin: 20px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .quote-card::before {
-            content: '"';
-            position: absolute;
-            top: -10px;
-            left: 20px;
-            font-size: 6rem;
-            color: rgba(59, 130, 246, 0.2);
-            font-family: 'Philosopher', sans-serif;
-        }
-        
-        .quote-text {
-            font-family: 'Philosopher', sans-serif;
-            font-size: 1.4rem;
-            line-height: 1.6;
-            color: var(--text-primary);
-            position: relative;
-            z-index: 1;
-            font-style: italic;
-        }
-        
-        .quote-author {
-            margin-top: 20px;
-            color: var(--accent);
-            font-weight: 500;
-            font-size: 0.95rem;
-        }
-        
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-top: 30px;
-        }
-        
-        .feature-item {
-            padding: 20px 15px;
-            text-align: center;
-            cursor: pointer;
-        }
-        
-        .feature-item i {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .feature-item h3 {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-        
-        /* Section Headers */
-        .section-header {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-        
-        .section-header h2 {
-            font-family: 'Philosopher', sans-serif;
-            font-size: 1.8rem;
-            margin-bottom: 8px;
-            background: linear-gradient(135deg, #fff, #94a3b8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .section-header p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-        
-        /* Class Selection */
-        .class-tabs {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 25px;
-            padding: 5px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .class-tab {
-            flex: 1;
-            padding: 15px;
-            text-align: center;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            border: none;
-            background: transparent;
-            color: var(--text-secondary);
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        .class-tab.active {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
-        }
-        
-        /* Category Cards */
-        .category-container {
-            display: none;
-        }
-        
-        .category-container.active {
-            display: block;
-            animation: slideIn 0.4s ease;
-        }
-        
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(20px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        
-        .category-card {
-            margin-bottom: 20px;
-            overflow: hidden;
-        }
-        
-        .category-header {
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            background: rgba(255, 255, 255, 0.03);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .category-title {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .category-title i {
-            font-size: 1.3rem;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.1);
-        }
-        
-        .category-title h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-        
-        .category-title .badge {
-            font-size: 0.7rem;
-            padding: 4px 10px;
-            border-radius: 20px;
-            margin-left: 8px;
-            font-weight: 600;
-        }
-        
-        .badge-free {
-            background: var(--success);
-            color: white;
-        }
-        
-        .badge-premium {
-            background: var(--premium);
-            color: #000;
-        }
-        
-        .toggle-icon {
-            transition: transform 0.3s ease;
-            color: var(--text-secondary);
-        }
-        
-        .category-card.expanded .toggle-icon {
-            transform: rotate(180deg);
-        }
-        
-        .subjects-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            padding: 20px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease, padding 0.4s ease;
-        }
-        
-        .category-card.expanded .subjects-grid {
-            max-height: 500px;
-            padding: 20px;
-        }
-        
-        .subject-item {
-            padding: 15px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .subject-item:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: scale(1.02);
-        }
-        
-        .subject-item i {
-            font-size: 1.5rem;
-            margin-bottom: 8px;
-            display: block;
-            color: var(--accent);
-        }
-        
-        .subject-item span {
-            font-size: 0.85rem;
-            display: block;
-            color: var(--text-secondary);
-        }
-        
-        /* Notice Section */
-        .notice-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        
-        .notice-item {
-            padding: 20px;
-            display: flex;
-            gap: 15px;
-            align-items: flex-start;
-            border-left: 4px solid var(--primary);
-        }
-        
-        .notice-item.urgent {
-            border-left-color: var(--danger);
-            background: rgba(239, 68, 68, 0.1);
-        }
-        
-        .notice-item.exam {
-            border-left-color: var(--warning);
-            background: rgba(245, 158, 11, 0.1);
-        }
-        
-        .notice-icon {
-            width: 45px;
-            height: 45px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(59, 130, 246, 0.2);
-            color: var(--primary);
-            flex-shrink: 0;
-        }
-        
-        .notice-item.urgent .notice-icon {
-            background: rgba(239, 68, 68, 0.2);
-            color: var(--danger);
-        }
-        
-        .notice-item.exam .notice-icon {
-            background: rgba(245, 158, 11, 0.2);
-            color: var(--warning);
-        }
-        
-        .notice-content h4 {
-            font-size: 1rem;
-            margin-bottom: 5px;
-            color: var(--text-primary);
-        }
-        
-        .notice-content p {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            line-height: 1.5;
-        }
-        
-        .notice-date {
-            font-size: 0.75rem;
-            color: var(--accent);
-            margin-top: 8px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        
-        /* Exam Section */
-        .exam-hero {
-            text-align: center;
-            padding: 40px 20px;
-            margin-bottom: 30px;
-        }
-        
-        .exam-hero i {
-            font-size: 4rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
-        }
-        
-        .exam-hero h2 {
-            font-family: 'Philosopher', sans-serif;
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-        }
-        
-        .exam-hero p {
-            color: var(--text-secondary);
-            margin-bottom: 25px;
-        }
-        
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 16px 40px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            border: none;
-            border-radius: 30px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
-            transition: all 0.3s ease;
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(59, 130, 246, 0.6);
-        }
-        
-        .btn-primary:active {
-            transform: translateY(0);
-        }
-        
-        .exam-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-top: 30px;
-        }
-        
-        .stat-card {
-            padding: 20px 10px;
-            text-align: center;
-        }
-        
-        .stat-number {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--accent);
-            display: block;
-        }
-        
-        .stat-label {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            margin-top: 5px;
-        }
-        
-        /* Quiz Modal */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            padding: 20px;
-        }
-        
-        .modal-overlay.active {
-            display: flex;
-            animation: fadeIn 0.3s ease;
-        }
-        
-        .modal-content {
-            width: 100%;
-            max-width: 450px;
-            max-height: 90vh;
-            overflow-y: auto;
-            padding: 30px;
-            position: relative;
-        }
-        
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            border: none;
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--text-primary);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-        
-        .close-modal:hover {
-            background: rgba(239, 68, 68, 0.3);
-            color: var(--danger);
-        }
-        
-        .quiz-question {
-            margin-bottom: 25px;
-        }
-        
-        .quiz-question h3 {
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
-        
-        .quiz-options {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        
-        .quiz-option {
-            padding: 15px 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .quiz-option:hover {
-            background: rgba(59, 130, 246, 0.2);
-            border-color: var(--primary);
-        }
-        
-        .quiz-option.selected {
-            background: rgba(59, 130, 246, 0.3);
-            border-color: var(--primary);
-        }
-        
-        .quiz-option.correct {
-            background: rgba(16, 185, 129, 0.3);
-            border-color: var(--success);
-        }
-        
-        .quiz-option.wrong {
-            background: rgba(239, 68, 68, 0.3);
-            border-color: var(--danger);
-        }
-        
-        .option-letter {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PRAGYANAM</title>  <!-- Google Fonts -->  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Philosopher:wght@700&display=swap" rel="stylesheet">  <!-- Icon -->  <link rel="icon" href="logopng.webp">  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .page { display: none; padding: 20px; }
+    .active { display: block; }
+
+    /* Glass Card */
+    .card {
+      background: rgba(255,255,255,0.1);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      padding: 15px;
+      margin: 10px 0;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+
+    h1, h2 {
+      font-family: 'Philosopher', serif;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .logo {
+      display: block;
+      margin: 20px auto;
+      width: 100px;
+    }
+
+    .quote {
+      text-align: center;
+      opacity: 0.8;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      background: #00c6ff;
+      color: white;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    /* Bottom Nav */
+    .nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      background: #111;
+      padding: 10px 0;
+    }
+
+    .nav button {
+      background: none;
+      color: white;
+      border: none;
+      font-size: 12px;
+    }
+
+    @media (max-width: 600px) {
+      .logo { width: 80px; }
+    }
+  </style></head>
+<body><!-- HOME --><div id="home" class="page active">
+  <img src="logopng.webp" class="logo">
+  <h1>PRAGYANAM</h1>
+  <p class="quote">"ज्ञान ही शक्ति है — Knowledge is Power"</p>
+</div><!-- NOTES --><div id="notes" class="page">
+  <h2>Notes</h2>
+  <div id="notesContent"></div>
+</div><!-- VIDEOS --><div id="videos" class="page">
+  <h2>Videos</h2>
+  <div id="videoContent"></div>
+</div><!-- NOTICE --><div id="notice" class="page">
+  <h2>Notice Board</h2>
+  <div class="card">No new notices yet.</div>
+</div><!-- EXAM --><div id="exam" class="page">
+  <h2>Mock Exams</h2>
+  <div class="card">
+    <p>Test your knowledge with quizzes</p>
+    <button onclick="startQuiz()">Start Quiz</button>
+  </div>
+</div><!-- NAVIGATION --><div class="nav">
+  <button onclick="showPage('home')">Home</button>
+  <button onclick="showPage('notes')">Notes</button>
+  <button onclick="showPage('videos')">Videos</button>
+  <button onclick="showPage('notice')">Notice</button>
+  <button onclick="showPage('exam')">Exam</button>
+</div><script>
+  const subjects = [
+    "Assamese",
+    "English",
+    "General Science",
+    "General Mathematics",
+    "Social Science"
+  ];
+
+  function generateContent(containerId) {
+    const container = document.getElementById(containerId);
+    let html = "";
+
+    ["Class 9", "Class 10"].forEach(cls => {
+      html += `<div class='card'><h3>${cls}</h3>`;
+
+      ["Free", "Premium (Payable)"].forEach(type => {
+        html += `<div class='card'><strong>${type}</strong>`;
+        subjects.forEach(sub => {
+          html += `<p>${sub}</p>`;
+        });
+        html += `</div>`;
+      });
+
+      html += `</div>`;
+    });
+
+    container.innerHTML = html;
+  }
+
+  generateContent("notesContent");
+  generateContent("videoContent");
+
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+
+  function startQuiz() {
+    alert("Quiz feature coming soon!");
+  }
+
+  // Basic PWA Service Worker
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js').catch(()=>{});
+  }
+</script></body>
+                       </html>
