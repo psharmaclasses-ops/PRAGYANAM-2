@@ -2,517 +2,352 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="theme-color" content="#6366f1">
-    <meta name="description" content="PRAGYANAM - Premium Educational Platform for Class 9 & 10">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="PRAGYANAM">
-    
-    <title>PRAGYANAM - Educational Platform</title>
-    
-    <!-- Favicon and App Icons -->
-    <link rel="icon" type="image/webp" href="logopng.webp">
-    <link rel="apple-touch-icon" href="logopng.webp">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Font Awesome -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRAGYANAM | Premium Learning</title>
+    <link href="https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        'philosopher': ['Philosopher', 'serif'],
-                        'poppins': ['Poppins', 'sans-serif'],
-                    },
-                    colors: {
-                        primary: '#0f0f1a',
-                        secondary: '#1a1a2e',
-                        accent: '#6366f1',
-                        premium: '#fbbf24',
-                        success: '#10b981',
-                        warning: '#f59e0b',
-                        danger: '#ef4444',
-                        info: '#3b82f6',
-                    }
-                }
-            }
-        }
-    </script>
-    
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+        :root {
+            --primary-dark: #0f172a;
+            --accent-gold: #fbbf24;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --text-main: #f8fafc;
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            
+            /* Subject Colors */
+            --color-asm: #ff4757;
+            --color-eng: #2ed573;
+            --color-sci: #1e90ff;
+            --color-math: #ffa502;
+            --color-ssc: #9c88ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-main);
             min-height: 100vh;
-            color: #fff;
             overflow-x: hidden;
         }
-        
-        .glass {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        
-        .glass-card {
-            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-        }
-        
-        .glass-nav {
-            background: rgba(15, 15, 26, 0.9);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .logo-container {
-            position: relative;
-            width: 140px;
-            height: 140px;
-            margin: 0 auto;
-        }
-        
-        .logo-glow {
-            position: absolute;
-            inset: -10px;
-            background: conic-gradient(from 0deg, #6366f1, #8b5cf6, #ec4899, #f59e0b, #10b981, #6366f1);
-            border-radius: 50%;
-            filter: blur(20px);
-            opacity: 0.6;
-            animation: rotate 10s linear infinite;
-        }
-        
-        .logo-inner-glow {
-            position: absolute;
-            inset: -5px;
-            background: radial-gradient(circle, rgba(99,102,241,0.4) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: pulse 3s ease-in-out infinite;
-        }
-        
-        .logo-img {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid rgba(255,255,255,0.2);
-            box-shadow: 0 0 40px rgba(99,102,241,0.5);
-            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
-            padding: 8px;
-        }
-        
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.6; }
-            50% { transform: scale(1.1); opacity: 0.8; }
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-        }
-        
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
+
+        /* --- Animations --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
-        .animate-float { animation: float 6s ease-in-out infinite; }
-        .animate-slide-up { animation: slideUp 0.6s ease-out forwards; }
-        
-        ::-webkit-scrollbar {
-            width: 6px;
+
+        @keyframes pulseLogo {
+            0% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(251, 191, 36, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0); }
         }
-        
-        ::-webkit-scrollbar-track {
-            background: #0f0f1a;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, #6366f1, #8b5cf6);
-            border-radius: 3px;
-        }
-        
+
         .page {
             display: none;
-            opacity: 0;
-            transition: opacity 0.4s ease;
+            padding: 20px;
+            padding-bottom: 100px;
+            animation: fadeIn 0.5s ease forwards;
         }
-        
-        .page.active {
-            display: block;
-            opacity: 1;
+
+        .page.active { display: block; }
+
+        /* --- Header & Logo --- */
+        .header-brand {
+            text-align: center;
+            padding: 40px 20px;
         }
-        
-        .subject-card {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
+
+        .logo-container {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
             overflow: hidden;
+            border: 3px solid var(--accent-gold);
+            animation: pulseLogo 2s infinite;
+            background: #fff;
         }
-        
-        .subject-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
-        
-        .icon-container {
-            width: 56px;
-            height: 56px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
+
+        h1.brand-name {
+            font-family: 'Philosopher', sans-serif;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            color: var(--accent-gold);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
-        
-        .icon-assamese { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); }
-        .icon-english { background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); }
-        .icon-science { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
-        .icon-math { background: linear-gradient(135deg, #ec4899 0%, #db2777 100%); }
-        .icon-social { background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); }
-        
-        .premium-badge {
-            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
-            box-shadow: 0 4px 15px rgba(251, 191, 36, 0.4);
+
+        .quote {
+            font-style: italic;
+            font-weight: 300;
+            opacity: 0.8;
+            margin-top: 15px;
+            max-width: 80%;
+            margin-left: auto;
+            margin-right: auto;
         }
-        
-        .nav-item {
-            position: relative;
-            transition: all 0.3s ease;
+
+        /* --- Glass Cards --- */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
         }
-        
-        .nav-item.active {
-            color: #6366f1;
-            transform: translateY(-5px);
-        }
-        
-        .nav-item.active::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 4px;
-            background: linear-gradient(90deg, #6366f1, #8b5cf6);
-            border-radius: 2px;
-            box-shadow: 0 0 10px rgba(99,102,241,0.8);
-        }
-        
-        .gradient-text {
-            background: linear-gradient(135deg, #818cf8 0%, #c084fc 50%, #f472b6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .class-btn {
-            background: rgba(255,255,255,0.05);
-            border: 2px solid rgba(255,255,255,0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .class-btn.active {
-            background: linear-gradient(135deg, rgba(99,102,241,0.3) 0%, rgba(139,92,246,0.3) 100%);
-            border-color: #6366f1;
-            box-shadow: 0 0 20px rgba(99,102,241,0.3);
-        }
-        
-        .quiz-option {
-            transition: all 0.3s ease;
-            border: 2px solid rgba(255,255,255,0.1);
-        }
-        
-        .quiz-option:hover {
-            border-color: #6366f1;
-            background: rgba(99,102,241,0.1);
-        }
-        
-        .quiz-option.selected {
-            border-color: #6366f1;
-            background: rgba(99,102,241,0.2);
-        }
-        
-        .quiz-option.correct {
-            border-color: #10b981;
-            background: rgba(16,185,129,0.2);
-        }
-        
-        .quiz-option.wrong {
-            border-color: #ef4444;
-            background: rgba(239,68,68,0.2);
-        }
-        
-        .notice-card {
-            border-left: 4px solid;
-            transition: all 0.3s ease;
-        }
-        
-        .notice-card:hover {
-            transform: translateX(5px);
-        }
-        
-        .notice-urgent { border-color: #ef4444; background: rgba(239,68,68,0.05); }
-        .notice-info { border-color: #3b82f6; background: rgba(59,130,246,0.05); }
-        .notice-success { border-color: #10b981; background: rgba(16,185,129,0.05); }
-        .notice-warning { border-color: #f59e0b; background: rgba(245,158,11,0.05); }
-        
-        .admin-panel {
-            display: none;
+
+        .glass-card:active { transform: scale(0.98); }
+
+        /* --- Navigation --- */
+        .bottom-nav {
             position: fixed;
-            top: 0;
+            bottom: 0;
             left: 0;
             right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.95);
-            z-index: 100;
-            overflow-y: auto;
-        }
-        
-        .admin-panel.active {
+            height: 70px;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(20px);
             display: flex;
-        }
-        
-        .fab {
-            position: fixed;
-            bottom: 100px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            display: flex;
+            justify-content: space-around;
             align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 30px rgba(99,102,241,0.4);
-            z-index: 40;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .fab:hover {
-            transform: scale(1.1) rotate(90deg);
-        }
-        
-        .toast {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%) translateY(-100px);
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            color: white;
-            padding: 16px 32px;
-            border-radius: 50px;
-            box-shadow: 0 10px 40px rgba(99,102,241,0.4);
+            border-top: 1px solid var(--glass-border);
             z-index: 1000;
-            transition: transform 0.3s ease;
-            font-weight: 500;
         }
-        
-        .toast.show {
-            transform: translateX(-50%) translateY(0);
-        }
-        
-        /* Test Organizer Styles */
-        .test-card {
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .test-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(99,102,241,0.5);
-            box-shadow: 0 10px 30px rgba(99,102,241,0.2);
-        }
-        
-        .test-status-upcoming { border-left: 4px solid #3b82f6; }
-        .test-status-active { border-left: 4px solid #10b981; animation: pulse-border 2s infinite; }
-        .test-status-completed { border-left: 4px solid #6b7280; opacity: 0.8; }
-        
-        @keyframes pulse-border {
-            0%, 100% { border-left-color: #10b981; }
-            50% { border-left-color: #34d399; }
-        }
-        
-        .question-builder {
-            background: rgba(0,0,0,0.3);
-            border-radius: 16px;
-            padding: 20px;
-            margin-bottom: 16px;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .timer-display {
-            font-family: 'Courier New', monospace;
-            font-size: 2rem;
-            font-weight: bold;
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .progress-ring {
-            transform: rotate(-90deg);
-        }
-        
-        .progress-ring-circle {
-            transition: stroke-dashoffset 0.35s;
-            transform-origin: 50% 50%;
-        }
-        
-        .rank-badge {
-            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-            box-shadow: 0 4px 15px rgba(251, 191, 36, 0.4);
-        }
-        
-        .leaderboard-item {
-            transition: all 0.3s ease;
-        }
-        
-        .leaderboard-item:hover {
-            background: rgba(255,255,255,0.05);
-            transform: translateX(5px);
-        }
-        
-        .difficulty-easy { color: #10b981; }
-        .difficulty-medium { color: #f59e0b; }
-        .difficulty-hard { color: #ef4444; }
-        
-        .subject-tag {
-            display: inline-flex;
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 6px;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 500;
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.7rem;
+            transition: 0.3s;
         }
-        
-        .tag-assamese { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
-        .tag-english { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
-        .tag-science { background: rgba(16, 185, 129, 0.2); color: #34d399; }
-        .tag-math { background: rgba(236, 72, 153, 0.2); color: #f472b6; }
-        .tag-social { background: rgba(139, 92, 246, 0.2); color: #a78bfa; }
+
+        .nav-item i {
+            font-size: 1.4rem;
+            margin-bottom: 4px;
+        }
+
+        .nav-item.active { color: var(--accent-gold); }
+        .nav-item.active i { transform: translateY(-5px); }
+
+        /* --- Category Styles --- */
+        .section-title {
+            font-family: 'Philosopher', sans-serif;
+            font-size: 1.5rem;
+            margin: 20px 0 15px;
+            border-left: 4px solid var(--accent-gold);
+            padding-left: 10px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .subject-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 25px 15px;
+        }
+
+        .subject-card i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        /* --- Subject Specific Colors --- */
+        .icon-asm { color: var(--color-asm); }
+        .icon-eng { color: var(--color-eng); }
+        .icon-sci { color: var(--color-sci); }
+        .icon-math { color: var(--color-math); }
+        .icon-ssc { color: var(--color-ssc); }
+
+        .badge-premium {
+            background: gold;
+            color: #000;
+            font-size: 0.6rem;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
     </style>
 </head>
-<body class="antialiased">
+<body>
 
-    <!-- Main Content Area -->
-    <main class="pb-28 min-h-screen">
-        
-        <!-- HOME PAGE -->
-        <section id="home" class="page active px-6 pt-12 pb-8">
-            <div class="max-w-md mx-auto text-center animate-slide-up">
-                <div class="logo-container mb-8 animate-float">
-                    <div class="logo-glow"></div>
-                    <div class="logo-inner-glow"></div>
-                    <img src="logopng.webp" alt="PRAGYANAM Logo" class="logo-img">
-                </div>
-                
-                <h1 class="font-philosopher text-5xl font-bold mb-3 gradient-text tracking-wide">PRAGYANAM</h1>
-                <p class="text-indigo-300 text-sm font-medium tracking-[0.3em] uppercase mb-10">Path to Wisdom</p>
-                
-                <div class="glass-card rounded-3xl p-8 mb-8 text-left relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-full blur-3xl -mr-16 -mt-16"></div>
-                    
-                    <h2 class="text-2xl font-semibold mb-4 text-white relative z-10">Welcome, Student! 👋</h2>
-                    <p class="text-gray-300 leading-relaxed mb-6 relative z-10">
-                        Begin your journey towards academic excellence. Access premium notes, video lectures, and mock tests designed specifically for SEBA Class 9 & 10 students.
-                    </p>
-                    
-                    <div class="border-l-4 border-indigo-500 pl-4 italic bg-gradient-to-r from-indigo-500/10 to-transparent py-2 rounded-r-lg">
-                        <p class="text-lg text-indigo-100 font-medium">"Education is the most powerful weapon which you can use to change the world."</p>
-                        <p class="text-sm text-gray-400 mt-2">— Nelson Mandela</p>
-                    </div>
-                </div>
-                
-                <div class="grid grid-cols-3 gap-4 mb-8">
-                    <div class="glass rounded-2xl p-4 border border-indigo-500/30">
-                        <div class="text-3xl font-bold text-indigo-400 mb-1" id="total-tests">0</div>
-                        <div class="text-xs text-gray-400">Tests Available</div>
-                    </div>
-                    <div class="glass rounded-2xl p-4 border border-purple-500/30">
-                        <div class="text-3xl font-bold text-purple-400 mb-1" id="tests-completed">0</div>
-                        <div class="text-xs text-gray-400">Completed</div>
-                    </div>
-                    <div class="glass rounded-2xl p-4 border border-pink-500/30">
-                        <div class="text-3xl font-bold text-pink-400 mb-1" id="avg-score">0%</div>
-                        <div class="text-xs text-gray-400">Avg Score</div>
-                    </div>
-                </div>
-                
-                <button onclick="navigateTo('test-center')" class="w-full bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:from-indigo-700 hover:via-purple-700 hover:to-pink-700 text-white font-bold py-4 rounded-2xl shadow-2xl transform transition hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2 group mb-4">
-                    <i class="fas fa-clipboard-check"></i>
-                    <span>Take a Test</span>
-                    <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                </button>
-                
-                <button onclick="navigateTo('test-organizer')" class="w-full glass hover:bg-white/10 text-white font-bold py-4 rounded-2xl transition-all flex items-center justify-center gap-2">
-                    <i class="fas fa-cog"></i>
-                    <span>Organize Test (Teacher)</span>
-                </button>
+    <div id="home" class="page active">
+        <div class="header-brand">
+            <div class="logo-container">
+                <img src="logopng.webp" alt="Pragyanam Logo" onerror="this.src='https://via.placeholder.com/150/FFFFFF/000000?text=LOGO'">
             </div>
-        </section>
+            <h1 class="brand-name">PRAGYANAM</h1>
+            <p class="quote">"Education is the most powerful weapon which you can use to change the world."</p>
+        </div>
+    </div>
 
-        <!-- TEST CENTER PAGE (For Students) -->
-        <section id="test-center" class="page px-6 pt-8 pb-8">
-            <div class="max-w-md mx-auto">
-                <div class="flex items-center justify-center gap-3 mb-6">
-                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
-                        <i class="fas fa-clipboard-check text-xl"></i>
-                    </div>
-                    <h2 class="font-philosopher text-3xl font-bold gradient-text">Test Center</h2>
-                </div>
+    <div id="notes" class="page">
+        <h2 class="section-title">Study Notes</h2>
+        <div id="notes-content"></div>
+    </div>
+
+    <div id="videos" class="page">
+        <h2 class="section-title">Video Lessons</h2>
+        <div id="videos-content"></div>
+    </div>
+
+    <div id="notice" class="page">
+        <h2 class="section-title">Notice Board</h2>
+        <div class="glass-card">
+            <h3 style="color: var(--accent-gold); margin-bottom: 10px;">Welcome to PRAGYANAM</h3>
+            <p style="font-size: 0.9rem; line-height: 1.6;">Hello Student! Welcome to your premium learning portal. Here you will find all the latest updates regarding your classes, exams, and new study materials.</p>
+        </div>
+        <div id="notice-list">
+            <div class="empty-state">No new notices at the moment.</div>
+        </div>
+    </div>
+
+    <div id="exam" class="page">
+        <h2 class="section-title">Online Exams</h2>
+        <div class="glass-card" style="text-align: center; padding: 40px 20px;">
+            <i class="fas fa-file-signature" style="font-size: 3rem; color: var(--accent-gold); margin-bottom: 20px;"></i>
+            <h3>Ready for a challenge?</h3>
+            <p style="margin-bottom: 25px; opacity: 0.8;">Test your knowledge with our subject-wise mock tests.</p>
+            <button class="glass-card" style="background: var(--accent-gold); color: #000; font-weight: bold; width: 100%; border: none;">START QUIZ</button>
+        </div>
+    </div>
+
+    <nav class="bottom-nav">
+        <a href="#" class="nav-item active" onclick="showPage('home', this)">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="#" class="nav-item" onclick="showPage('notes', this)">
+            <i class="fas fa-book-open" style="color: #ff4757;"></i>
+            <span>Notes</span>
+        </a>
+        <a href="#" class="nav-item" onclick="showPage('videos', this)">
+            <i class="fas fa-play-circle" style="color: #2ed573;"></i>
+            <span>Videos</span>
+        </a>
+        <a href="#" class="nav-item" onclick="showPage('notice', this)">
+            <i class="fas fa-bell" style="color: #ffa502;"></i>
+            <span>Notice</span>
+        </a>
+        <a href="#" class="nav-item" onclick="showPage('exam', this)">
+            <i class="fas fa-user-graduate" style="color: #1e90ff;"></i>
+            <span>Exam</span>
+        </a>
+    </nav>
+
+    <script>
+        // --- Dynamic Data Controller ---
+        // Edit this object to add content. The UI will update automatically.
+        const APP_DATA = {
+            classes: ["Class 9", "Class 10"],
+            types: ["Free", "Premium (Payable)"],
+            subjects: [
+                { name: "Assamese", icon: "fa-language", cls: "icon-asm" },
+                { name: "English", icon: "fa-font", cls: "icon-eng" },
+                { name: "General Science", icon: "fa-atom", cls: "icon-sci" },
+                { name: "General Mathematics", icon: "fa-calculator", cls: "icon-math" },
+                { name: "Social Science", icon: "fa-globe-asia", cls: "icon-ssc" }
+            ],
+            // Content holders (PDFs, Videos, etc would be linked here)
+            library: [] 
+        };
+
+        // --- Navigation Logic ---
+        function showPage(pageId, element) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+            
+            document.getElementById(pageId).classList.add('active');
+            element.classList.add('active');
+            window.scrollTo(0,0);
+        }
+
+        // --- Dynamic UI Generator ---
+        function renderStudySections(containerId) {
+            const container = document.getElementById(containerId);
+            let html = '';
+
+            APP_DATA.classes.forEach(className => {
+                html += `<h3 style="margin: 20px 0 10px; font-size: 1.1rem; opacity: 0.9;">${className}</h3>`;
                 
-                <!-- Filter Tabs -->
-                <div class="flex gap-2 mb-6 overflow-x-auto pb-2">
-                    <button onclick="filterTests('all')" class="test-filter active px-4 py-2 rounded-full text-sm font-medium bg-indigo-600 text-white whitespace-nowrap" data-filter="all">
-                        All Tests
-                    </button>
-                    <button onclick="filterTests('upcoming')" class="test-filter px-4 py-2 rounded-full text-sm font-medium bg-white/10 text-gray-300 whitespace-nowrap" data-filter="upcoming">
-                        Upcoming
-                    </button>
-                    <button onclick="filterTests('active')" class="test-filter px-4 py-2 rounded-full text-sm font-medium bg-white/10 text-gray-300 whitespace-nowrap" data-filter="active">
-                        Active Now
-                    </button>
-                    <button onclick="filterTests('completed')" class="test-filter px-4 py-2 rounded-full text-sm font-medium bg-white/10 text-gray-300 whitespace-nowrap" data-filter="completed">
-                        Completed
-                    </button>
-                </div>
-                
-                <!-- Tests List -->
-                <div id="tests-list" class="space-y-4">
-                    <!-- Populated by JavaScript -->
-                </div>
-                
-                <!-- Empty State -->
-                <div id="no-tests" class="hidden text-center py-12">
-                    <div class="w-24 h-24 mx-auto mb-4 rounded-full bg-white/5 flex items-center justify-center">
-                        <i class="fas fa-inbox text-4xl text-gray-500"></i>
-                    </div>
-                    <p class="text-gray-400">No tests available</p>
-                </div>
-            </div>
-        </sec
+                APP_DATA.types.forEach(type => {
+                    const isPremium = type.includes("Premium");
+                    html += `
+                        <div class="glass-card" style="border-color: ${isPremium ? 'rgba(251, 191, 36, 0.3)' : 'var(--glass-border)'}">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                                <span style="font-weight: 600; color: ${isPremium ? 'var(--accent-gold)' : '#fff'}">${type}</span>
+                                ${isPremium ? '<span class="badge-premium">PRO</span>' : ''}
+                            </div>
+                            <div class="grid-container">
+                                ${APP_DATA.subjects.map(sub => `
+                                    <div class="glass-card subject-card" onclick="handleSubjectClick('${className}', '${type}', '${sub.name}')">
+                                        <i class="fas ${sub.icon} ${sub.cls}"></i>
+                                        <span style="font-size: 0.75rem; font-weight: 500;">${sub.name}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                });
+            });
+
+            container.innerHTML = html;
+        }
+
+        function handleSubjectClick(cls, type, subject) {
+            alert(`Opening ${subject} for ${cls} (${type}).\nNote: Content will appear here once uploaded to the Data Controller.`);
+        }
+
+        // Initialize
+        window.onload = () => {
+            renderStudySections('notes-content');
+            renderStudySections('videos-content');
+        };
+
+        // Basic PWA Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').catch(() => {
+                    console.log('PWA: Running in web mode.');
+                });
+            });
+        }
+    </script>
+</body>
+    </html>
+    
