@@ -2,26 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRAGYANAM | Premium Learning</title>
-    <link href="https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="description" content="PRAGYANAM - Premium Educational Platform for Class 9 & 10">
+    <title>PRAGYANAM - Premium Education</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    
+    <!-- Favicon and App Icons -->
+    <link rel="icon" type="image/png" href="https://kimi-web-img.moonshot.cn/img/img.freepik.com/26c759e5bcaa07e237c7402b493de035b795a4bf.jpg">
+    <link rel="apple-touch-icon" href="https://kimi-web-img.moonshot.cn/img/img.freepik.com/26c759e5bcaa07e237c7402b493de035b795a4bf.jpg">
     
     <style>
         :root {
-            --primary-dark: #0f172a;
-            --accent-gold: #fbbf24;
-            --glass-bg: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.2);
-            --text-main: #f8fafc;
-            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            
-            /* Subject Colors */
-            --color-asm: #ff4757;
-            --color-eng: #2ed573;
-            --color-sci: #1e90ff;
-            --color-math: #ffa502;
-            --color-ssc: #9c88ff;
+            --primary-navy: #0f172a;
+            --secondary-navy: #1e293b;
+            --slate: #334155;
+            --light-slate: #64748b;
+            --gold: #fbbf24;
+            --gold-light: #fcd34d;
+            --white: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --gradient-primary: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            --gradient-gold: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
         }
 
         * {
@@ -31,323 +44,666 @@
             -webkit-tap-highlight-color: transparent;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
-            background: var(--bg-gradient);
-            background-attachment: fixed;
-            color: var(--text-main);
+            background: var(--gradient-primary);
+            color: var(--white);
             min-height: 100vh;
             overflow-x: hidden;
+            position: relative;
         }
 
-        /* --- Animations --- */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
         }
 
-        @keyframes pulseLogo {
-            0% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.4); }
-            70% { box-shadow: 0 0 0 15px rgba(251, 191, 36, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0); }
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle at 20% 80%, rgba(251, 191, 36, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 40%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
+            animation: bgFloat 20s ease-in-out infinite;
         }
 
-        .page {
-            display: none;
-            padding: 20px;
-            padding-bottom: 100px;
-            animation: fadeIn 0.5s ease forwards;
+        @keyframes bgFloat {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(1deg); }
+            66% { transform: translate(-20px, 20px) rotate(-1deg); }
         }
 
-        .page.active { display: block; }
-
-        /* --- Header & Logo --- */
-        .header-brand {
-            text-align: center;
-            padding: 40px 20px;
+        /* Header */
+        .app-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
         }
 
-        .logo-container {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 20px;
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-wrapper {
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             overflow: hidden;
-            border: 3px solid var(--accent-gold);
-            animation: pulseLogo 2s infinite;
-            background: #fff;
+            border: 2px solid var(--gold);
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.4);
+            animation: logoGlow 3s ease-in-out infinite;
+            position: relative;
         }
 
-        .logo-container img {
+        @keyframes logoGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(251, 191, 36, 0.4); }
+            50% { box-shadow: 0 0 30px rgba(251, 191, 36, 0.7); }
+        }
+
+        .logo-wrapper img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        h1.brand-name {
+        .brand-name {
+            font-family: 'Philosopher', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .icon-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--white);
+        }
+
+        .icon-btn:hover {
+            background: rgba(251, 191, 36, 0.2);
+            transform: scale(1.1);
+        }
+
+        .icon-btn .material-icons-round {
+            font-size: 20px;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding-top: 80px;
+            padding-bottom: 100px;
+            min-height: 100vh;
+        }
+
+        .page-section {
+            display: none;
+            animation: fadeIn 0.4s ease;
+            padding: 20px;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Home Screen - Zen Mode */
+        .home-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 180px);
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .home-logo-container {
+            margin-bottom: 30px;
+        }
+
+        .home-logo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid var(--gold);
+            box-shadow: 0 0 40px rgba(251, 191, 36, 0.5), inset 0 0 40px rgba(251, 191, 36, 0.1);
+            animation: homeLogoPulse 4s ease-in-out infinite;
+            overflow: hidden;
+        }
+
+        @keyframes homeLogoPulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 40px rgba(251, 191, 36, 0.5); }
+            50% { transform: scale(1.05); box-shadow: 0 0 60px rgba(251, 191, 36, 0.8); }
+        }
+
+        .home-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .welcome-text {
             font-family: 'Philosopher', sans-serif;
             font-size: 2.5rem;
-            letter-spacing: 2px;
-            color: var(--accent-gold);
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            margin-bottom: 10px;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .quote {
-            font-style: italic;
+        .tagline {
+            font-size: 1rem;
+            color: var(--light-slate);
+            margin-bottom: 40px;
             font-weight: 300;
-            opacity: 0.8;
-            margin-top: 15px;
-            max-width: 80%;
-            margin-left: auto;
-            margin-right: auto;
         }
 
-        /* --- Glass Cards --- */
+        .quote-container {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 500px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quote-container::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            font-size: 80px;
+            color: var(--gold);
+            opacity: 0.3;
+            font-family: serif;
+        }
+
+        .quote-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            line-height: 1.6;
+            color: var(--white);
+            margin-bottom: 15px;
+        }
+
+        .quote-author {
+            font-size: 0.9rem;
+            color: var(--gold);
+            font-weight: 500;
+        }
+
+        /* Cards */
+        .section-title {
+            font-family: 'Philosopher', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title .material-icons-round {
+            color: var(--gold);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
         .glass-card {
             background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
             border-radius: 20px;
             padding: 20px;
-            margin-bottom: 15px;
-            transition: transform 0.3s ease;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
         }
 
-        .glass-card:active { transform: scale(0.98); }
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
 
-        /* --- Navigation --- */
+        .glass-card:hover::before {
+            left: 100%;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: var(--gold);
+            box-shadow: 0 10px 40px rgba(251, 191, 36, 0.2);
+        }
+
+        .glass-card:active {
+            transform: scale(0.98);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .card-subtitle {
+            font-size: 0.85rem;
+            color: var(--light-slate);
+        }
+
+        .premium-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--gradient-gold);
+            color: var(--primary-navy);
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        /* Subject Colors */
+        .subject-assamese { background: linear-gradient(135deg, #f97316, #ea580c); }
+        .subject-english { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+        .subject-science { background: linear-gradient(135deg, #10b981, #059669); }
+        .subject-math { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+        .subject-social { background: linear-gradient(135deg, #ec4899, #db2777); }
+
+        /* Notice Section */
+        .notice-welcome {
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(251, 191, 36, 0.05));
+            border: 1px solid var(--gold);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .notice-welcome h3 {
+            font-family: 'Philosopher', sans-serif;
+            color: var(--gold);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .notice-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .notice-item {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            gap: 15px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .notice-item:hover {
+            border-color: var(--gold);
+            transform: translateX(5px);
+        }
+
+        .notice-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-gold);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .notice-icon .material-icons-round {
+            color: var(--primary-navy);
+            font-size: 24px;
+        }
+
+        .notice-content h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .notice-content p {
+            font-size: 0.85rem;
+            color: var(--light-slate);
+            line-height: 1.4;
+        }
+
+        .notice-date {
+            font-size: 0.75rem;
+            color: var(--gold);
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Exam Section */
+        .exam-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .exam-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .exam-title {
+            font-family: 'Philosopher', sans-serif;
+            font-size: 1.3rem;
+        }
+
+        .exam-timer {
+            background: var(--gradient-gold);
+            color: var(--primary-navy);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .question-container {
+            margin-bottom: 20px;
+        }
+
+        .question-number {
+            color: var(--gold);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .question-text {
+            font-size: 1.1rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .option-item:hover {
+            background: rgba(251, 191, 36, 0.1);
+            border-color: var(--gold);
+        }
+
+        .option-item.selected {
+            background: rgba(251, 191, 36, 0.2);
+            border-color: var(--gold);
+        }
+
+        .option-letter {
+            width: 32px;
+            height: 32px;
+            background: var(--slate);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .option-item.selected .option-letter {
+            background: var(--gold);
+            color: var(--primary-navy);
+        }
+
+        .exam-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 15px 25px;
+            border-radius: 12px;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--gradient-gold);
+            color: var(--primary-navy);
+        }
+
+        .btn-secondary {
+            background: var(--glass-bg);
+            color: var(--white);
+            border: 1px solid var(--glass-border);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Bottom Navigation */
         .bottom-nav {
             position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
-            height: 70px;
             background: rgba(15, 23, 42, 0.9);
             backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid var(--glass-border);
+            padding: 10px 20px 25px;
+            z-index: 1000;
+        }
+
+        .nav-container {
             display: flex;
             justify-content: space-around;
             align-items: center;
-            border-top: 1px solid var(--glass-border);
-            z-index: 1000;
+            max-width: 500px;
+            margin: 0 auto;
         }
 
         .nav-item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            color: #94a3b8;
-            text-decoration: none;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px 15px;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+            color: var(--light-slate);
+        }
+
+        .nav-item.active {
+            color: var(--gold);
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(251, 191, 36, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.4s ease;
+        }
+
+        .nav-item:active::before {
+            width: 60px;
+            height: 60px;
+        }
+
+        .nav-item .material-icons-round {
+            font-size: 26px;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-item:hover .material-icons-round {
+            transform: translateY(-3px);
+        }
+
+        .nav-label {
             font-size: 0.7rem;
-            transition: 0.3s;
+            font-weight: 500;
         }
 
-        .nav-item i {
-            font-size: 1.4rem;
-            margin-bottom: 4px;
-        }
-
-        .nav-item.active { color: var(--accent-gold); }
-        .nav-item.active i { transform: translateY(-5px); }
-
-        /* --- Category Styles --- */
-        .section-title {
-            font-family: 'Philosopher', sans-serif;
-            font-size: 1.5rem;
-            margin: 20px 0 15px;
-            border-left: 4px solid var(--accent-gold);
-            padding-left: 10px;
-        }
-
-        .grid-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
-        .subject-card {
-            display: flex;
+        /* Content Viewer */
+        .content-viewer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--primary-navy);
+            z-index: 2000;
+            display: none;
             flex-direction: column;
+        }
+
+        .content-viewer.active {
+            display: flex;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+
+        .viewer-header {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            padding: 15px 20px;
+            display: flex;
             align-items: center;
-            text-align: center;
-            padding: 25px 15px;
+            gap: 15px;
+            border-bottom: 1px solid var(--glass-border);
         }
 
-        .subject-card i {
-            font-size: 2rem;
-            margin-bottom: 10px;
+        .viewer-title {
+            flex: 1;
+            font-family: 'Philosopher', sans-serif;
+            font-size: 1.2rem;
         }
 
-        /* --- Subject Specific Colors --- */
-        .icon-asm { color: var(--color-asm); }
-        .icon-eng { color: var(--color-eng); }
-        .icon-sci { color: var(--color-sci); }
-        .icon-math { color: var(--color-math); }
-        .icon-ssc { color: var(--color-ssc); }
-
-        .badge-premium {
-            background: gold;
-            color: #000;
-            font-size: 0.6rem;
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-weight: bold;
-            margin-top: 5px;
+        .viewer-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
         }
 
-        .empty-state {
-            text-align: center;
-            padding: 40px;
-            opacity: 0.6;
-            font-size: 0.9rem;
-        }
-
-    </style>
-</head>
-<body>
-
-    <div id="home" class="page active">
-        <div class="header-brand">
-            <div class="logo-container">
-                <img src="logopng.webp" alt="Pragyanam Logo" onerror="this.src='https://via.placeholder.com/150/FFFFFF/000000?text=LOGO'">
-            </div>
-            <h1 class="brand-name">PRAGYANAM</h1>
-            <p class="quote">"Education is the most powerful weapon which you can use to change the world."</p>
-        </div>
-    </div>
-
-    <div id="notes" class="page">
-        <h2 class="section-title">Study Notes</h2>
-        <div id="notes-content"></div>
-    </div>
-
-    <div id="videos" class="page">
-        <h2 class="section-title">Video Lessons</h2>
-        <div id="videos-content"></div>
-    </div>
-
-    <div id="notice" class="page">
-        <h2 class="section-title">Notice Board</h2>
-        <div class="glass-card">
-            <h3 style="color: var(--accent-gold); margin-bottom: 10px;">Welcome to PRAGYANAM</h3>
-            <p style="font-size: 0.9rem; line-height: 1.6;">Hello Student! Welcome to your premium learning portal. Here you will find all the latest updates regarding your classes, exams, and new study materials.</p>
-        </div>
-        <div id="notice-list">
-            <div class="empty-state">No new notices at the moment.</div>
-        </div>
-    </div>
-
-    <div id="exam" class="page">
-        <h2 class="section-title">Online Exams</h2>
-        <div class="glass-card" style="text-align: center; padding: 40px 20px;">
-            <i class="fas fa-file-signature" style="font-size: 3rem; color: var(--accent-gold); margin-bottom: 20px;"></i>
-            <h3>Ready for a challenge?</h3>
-            <p style="margin-bottom: 25px; opacity: 0.8;">Test your knowledge with our subject-wise mock tests.</p>
-            <button class="glass-card" style="background: var(--accent-gold); color: #000; font-weight: bold; width: 100%; border: none;">START QUIZ</button>
-        </div>
-    </div>
-
-    <nav class="bottom-nav">
-        <a href="#" class="nav-item active" onclick="showPage('home', this)">
-            <i class="fas fa-home"></i>
-            <span>Home</span>
-        </a>
-        <a href="#" class="nav-item" onclick="showPage('notes', this)">
-            <i class="fas fa-book-open" style="color: #ff4757;"></i>
-            <span>Notes</span>
-        </a>
-        <a href="#" class="nav-item" onclick="showPage('videos', this)">
-            <i class="fas fa-play-circle" style="color: #2ed573;"></i>
-            <span>Videos</span>
-        </a>
-        <a href="#" class="nav-item" onclick="showPage('notice', this)">
-            <i class="fas fa-bell" style="color: #ffa502;"></i>
-            <span>Notice</span>
-        </a>
-        <a href="#" class="nav-item" onclick="showPage('exam', this)">
-            <i class="fas fa-user-graduate" style="color: #1e90ff;"></i>
-            <span>Exam</span>
-        </a>
-    </nav>
-
-    <script>
-        // --- Dynamic Data Controller ---
-        // Edit this object to add content. The UI will update automatically.
-        const APP_DATA = {
-            classes: ["Class 9", "Class 10"],
-            types: ["Free", "Premium (Payable)"],
-            subjects: [
-                { name: "Assamese", icon: "fa-language", cls: "icon-asm" },
-                { name: "English", icon: "fa-font", cls: "icon-eng" },
-                { name: "General Science", icon: "fa-atom", cls: "icon-sci" },
-                { name: "General Mathematics", icon: "fa-calculator", cls: "icon-math" },
-                { name: "Social Science", icon: "fa-globe-asia", cls: "icon-ssc" }
-            ],
-            // Content holders (PDFs, Videos, etc would be linked here)
-            library: [] 
-        };
-
-        // --- Navigation Logic ---
-        function showPage(pageId, element) {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-            
-            document.getElementById(pageId).classList.add('active');
-            element.classList.add('active');
-            window.scrollTo(0,0);
-        }
-
-        // --- Dynamic UI Generator ---
-        function renderStudySections(containerId) {
-            const container = document.getElementById(containerId);
-            let html = '';
-
-            APP_DATA.classes.forEach(className => {
-                html += `<h3 style="margin: 20px 0 10px; font-size: 1.1rem; opacity: 0.9;">${className}</h3>`;
-                
-                APP_DATA.types.forEach(type => {
-                    const isPremium = type.includes("Premium");
-                    html += `
-                        <div class="glass-card" style="border-color: ${isPremium ? 'rgba(251, 191, 36, 0.3)' : 'var(--glass-border)'}">
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                                <span style="font-weight: 600; color: ${isPremium ? 'var(--accent-gold)' : '#fff'}">${type}</span>
-                                ${isPremium ? '<span class="badge-premium">PRO</span>' : ''}
-                            </div>
-                            <div class="grid-container">
-                                ${APP_DATA.subjects.map(sub => `
-                                    <div class="glass-card subject-card" onclick="handleSubjectClick('${className}', '${type}', '${sub.name}')">
-                                        <i class="fas ${sub.icon} ${sub.cls}"></i>
-                                        <span style="font-size: 0.75rem; font-weight: 500;">${sub.name}</span>
-                                    </div>
-                                `).join('')}
-                            </div>
-                        </div>
-                    `;
-                });
-            });
-
-            container.innerHTML = html;
-        }
-
-        function handleSubjectClick(cls, type, subject) {
-            alert(`Opening ${subject} for ${cls} (${type}).\nNote: Content will appear here once uploaded to the Data Controller.`);
-        }
-
-        // Initialize
-        window.onload = () => {
-            renderStudySections('notes-content');
-            renderStudySections('videos-content');
-        };
-
-        // Basic PWA Service Worker Registration
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js').catch(() => {
-                    console.log('PWA: Running in web mode.');
-                });
-            });
-        }
-    </script>
-</body>
-    </html>
-    
+        .pdf-placeholder, .video-placeholder {
+            background: var(--glass-bg);
+            border: 2px dashed var(--glass-border);
+            border-radius: 20px;
+            height: 400px;
+            display: flex;
+   
