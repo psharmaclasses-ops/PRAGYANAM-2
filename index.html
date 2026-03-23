@@ -4,105 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#1e1b4b">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>PRAGYANOM - Premium Education Platform</title>
     
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&family=Crimson+Pro:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Lottie Animation -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
-    
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     
-    <!-- Tailwind Config -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        indigo: {
-                            950: '#0f0a1e',
-                            900: '#1e1b4b',
-                            800: '#312e81',
-                            700: '#4338ca',
-                            600: '#4f46e5',
-                            500: '#6366f1',
-                            400: '#818cf8',
-                            300: '#a5b4fc',
-                            200: '#c7d2fe',
-                            100: '#e0e7ff',
-                            50: '#eef2ff',
-                        },
-                        gold: {
-                            500: '#f59e0b',
-                            400: '#fbbf24',
-                            300: '#fcd34d',
-                            200: '#fde68a',
-                            100: '#fef3c7',
-                            50: '#fffbeb',
-                        },
-                        slate: {
-                            950: '#020617',
-                            900: '#0f172a',
-                            800: '#1e293b',
-                            700: '#334155',
-                            600: '#475569',
-                            500: '#64748b',
-                            400: '#94a3b8',
-                            300: '#cbd5e1',
-                            200: '#e2e8f0',
-                            100: '#f1f5f9',
-                            50: '#f8fafc',
-                        }
+                        indigo: { 950: '#0f0a1e', 900: '#1e1b4b', 500: '#6366f1' },
+                        gold: { 500: '#f59e0b', 400: '#fbbf24' }
                     },
-                    fontFamily: {
-                        'display': ['Playfair Display', 'serif'],
-                        'sans': ['Inter', 'sans-serif'],
-                        'body': ['Crimson Pro', 'serif'],
-                    },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'shimmer': 'shimmer 2s linear infinite',
-                        'slide-up': 'slideUp 0.6s ease-out',
-                        'fade-in': 'fadeIn 0.8s ease-out',
-                        'scale-in': 'scaleIn 0.5s ease-out',
-                        'rotate-slow': 'rotate 20s linear infinite',
-                        'bounce-subtle': 'bounceSubtle 2s ease-in-out infinite',
-                    },
+                    fontFamily: { 'display': ['Playfair Display', 'serif'], 'sans': ['Inter', 'sans-serif'], 'body': ['Crimson Pro', 'serif'] },
+                    animation: { 'float': 'float 6s ease-in-out infinite', 'rotate-slow': 'rotate 20s linear infinite' },
                     keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        },
-                        shimmer: {
-                            '0%': { backgroundPosition: '-1000px 0' },
-                            '100%': { backgroundPosition: '1000px 0' },
-                        },
-                        slideUp: {
-                            '0%': { transform: 'translateY(30px)', opacity: '0' },
-                            '100%': { transform: 'translateY(0)', opacity: '1' },
-                        },
-                        fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' },
-                        },
-                        scaleIn: {
-                            '0%': { transform: 'scale(0.9)', opacity: '0' },
-                            '100%': { transform: 'scale(1)', opacity: '1' },
-                        },
-                        bounceSubtle: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-5px)' },
-                        }
+                        float: { '0%, 100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-20px)' } },
+                        rotate: { 'from': { transform: 'rotate(0deg)' }, 'to': { transform: 'rotate(360deg)' } }
                     }
                 }
             }
@@ -110,355 +30,307 @@
     </script>
     
     <style>
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0f0a1e;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, #f59e0b, #fbbf24);
-            border-radius: 3px;
-        }
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-thumb { background: #fbbf24; border-radius: 5px; }
         
-        /* Glassmorphism */
-        .glass {
-            background: rgba(30, 27, 75, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .glass-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .glass-card:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-        
-        /* Gradient Text */
-        .gradient-text {
-            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #fcd34d 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        /* Animated Background */
         .bg-mesh {
-            background: 
-                radial-gradient(at 40% 20%, rgba(67, 56, 202, 0.4) 0px, transparent 50%),
-                radial-gradient(at 80% 0%, rgba(245, 158, 11, 0.3) 0px, transparent 50%),
-                radial-gradient(at 0% 50%, rgba(79, 70, 229, 0.4) 0px, transparent 50%),
-                radial-gradient(at 80% 50%, rgba(245, 158, 11, 0.2) 0px, transparent 50%),
-                radial-gradient(at 0% 100%, rgba(67, 56, 202, 0.4) 0px, transparent 50%),
-                #0f0a1e;
+            background: radial-gradient(at 40% 20%, rgba(67, 56, 202, 0.4) 0px, transparent 50%),
+                        radial-gradient(at 80% 0%, rgba(245, 158, 11, 0.3) 0px, transparent 50%), #0f0a1e;
             background-attachment: fixed;
         }
+
+        .glass { background: rgba(30, 27, 75, 0.7); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .glass-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; }
+        .gradient-text { background: linear-gradient(135deg, #fbbf24, #f59e0b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
-        /* Typewriter Cursor */
-        .typewriter-cursor {
-            display: inline-block;
-            width: 3px;
-            height: 1em;
-            background: #fbbf24;
-            margin-left: 2px;
-            animation: blink 1s step-end infinite;
-        }
-        
-        @keyframes blink {
-            50% { opacity: 0; }
-        }
-        
-        /* Premium Card Glow */
-        .premium-glow {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .premium-glow::before {
-            content: '';
-            position: absolute;
-            top: -2px; left: -2px; right: -2px; bottom: -2px;
-            background: linear-gradient(45deg, #f59e0b, #fbbf24, #fcd34d, #f59e0b);
-            border-radius: inherit;
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        
-        .premium-glow:hover::before {
-            opacity: 1;
-            animation: rotate 3s linear infinite;
-        }
-        
-        /* Navigation Active State */
-        .nav-item {
-            position: relative;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-item.active {
-            color: #fbbf24;
-        }
-        
-        .nav-item.active::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 4px;
-            height: 4px;
-            background: #fbbf24;
-            border-radius: 50%;
-            box-shadow: 0 0 10px #fbbf24;
-        }
-        
-        /* Loading Skeleton */
-        .skeleton {
-            background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
-            background-size: 1000px 100%;
-            animation: shimmer 2s infinite linear;
-        }
-        
-        /* Ripple Effect */
-        .ripple {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .ripple::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-        
-        .ripple:active::after {
-            width: 300px;
-            height: 300px;
-        }
-        
-        /* Progress Ring */
-        .progress-ring {
-            transform: rotate(-90deg);
-        }
-        
-        .progress-ring-circle {
-            transition: stroke-dashoffset 0.35s;
-            transform-origin: 50% 50%;
-        }
-        
-        /* Hide scrollbar but keep functionality */
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        
-        /* Page Transitions */
-        .page {
-            display: none;
-            animation: fadeIn 0.5s ease-out;
-        }
-        
-        .page.active {
-            display: block;
-        }
-        
-        /* Selection Card Animation */
-        .selection-card {
-            transform: scale(0.95);
-            opacity: 0;
-            animation: scaleIn 0.4s ease-out forwards;
-        }
-        
-        /* Stagger Animation Delays */
-        .stagger-1 { animation-delay: 0.1s; }
-        .stagger-2 { animation-delay: 0.2s; }
-        .stagger-3 { animation-delay: 0.3s; }
-        .stagger-4 { animation-delay: 0.4s; }
-        .stagger-5 { animation-delay: 0.5s; }
-        
-        /* Premium Badge */
-        .premium-badge {
-            background: linear-gradient(135deg, #f59e0b, #fbbf24);
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
-        }
-        
-        /* Coming Soon Overlay */
-        .coming-soon-overlay {
-            background: rgba(15, 10, 30, 0.95);
-            backdrop-filter: blur(8px);
-        }
-        
-        /* Touch Feedback */
-        @media (hover: none) {
-            .glass-card:active {
-                transform: scale(0.98);
-            }
-        }
+        .page { display: none; animation: fadeIn 0.4s ease-out forwards; }
+        .page.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        #premium-knob { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .nav-item.active { color: #fbbf24; }
+        .typewriter-cursor { animation: blink 1s step-end infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
     </style>
 </head>
-<body class="bg-mesh text-slate-100 font-sans antialiased min-h-screen overflow-x-hidden">
-    
-    <!-- App Container -->
-    <div id="app" class="relative min-h-screen pb-24">
+
+<body class="bg-mesh text-slate-100 font-sans min-h-screen pb-24">
+
+    <header class="fixed top-0 left-0 right-0 z-50 glass px-4 py-3">
+        <div class="max-w-lg mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full border-2 border-gold-400/30 overflow-hidden">
+                    <img src="logopng.webp" alt="Logo" class="w-full h-full object-cover">
+                </div>
+                <div>
+                    <h1 class="font-display text-xl font-bold gradient-text">PRAGYANOM</h1>
+                </div>
+            </div>
+            <button class="w-10 h-10 rounded-full glass flex items-center justify-center">
+                <i data-lucide="user" class="w-5 h-5 text-gold-400"></i>
+            </button>
+        </div>
+    </header>
+
+    <div class="h-20"></div>
+
+    <main class="max-w-lg mx-auto px-4">
         
-        <!-- Header -->
-        <header class="fixed top-0 left-0 right-0 z-50 glass px-4 py-3 transition-all duration-300" id="header">
-            <div class="max-w-lg mx-auto flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-gold-400/30 shadow-lg shadow-gold-500/20">
-                        <img src="logopng.webp" alt="PRAGYANOM" class="w-full h-full object-cover animate-rotate-slow" id="header-logo">
-                    </div>
-                    <div>
-                        <h1 class="font-display text-xl font-bold gradient-text tracking-tight">PRAGYANOM</h1>
-                        <p class="text-xs text-slate-400 font-medium">Excellence in Education</p>
-                    </div>
+        <section id="page-home" class="page active">
+            <div class="text-center py-10">
+                <div class="w-32 h-32 mx-auto mb-6 relative animate-float">
+                    <div class="absolute inset-0 rounded-full bg-gold-400/20 blur-xl"></div>
+                    <img src="logopng.webp" class="relative w-full h-full rounded-full border-4 border-gold-400/20">
                 </div>
-                <button id="profile-btn" class="w-10 h-10 rounded-full glass flex items-center justify-center ripple hover:bg-white/10 transition-colors">
-                    <i data-lucide="user" class="w-5 h-5 text-gold-400"></i>
-                </button>
-            </div>
-        </header>
-
-        <!-- Spacer for Fixed Header -->
-        <div class="h-20"></div>
-
-        <!-- HOME PAGE -->
-        <section id="page-home" class="page active px-4 py-6 max-w-lg mx-auto">
-            
-            <!-- Hero Section -->
-            <div class="relative mb-8 text-center">
-                <div class="absolute inset-0 flex items-center justify-center opacity-20 pointer-events-none">
-                    <div class="w-64 h-64 rounded-full bg-gradient-to-r from-indigo-600 to-gold-500 blur-3xl animate-pulse-slow"></div>
-                </div>
-                
-                <div class="relative z-10">
-                    <div class="w-32 h-32 mx-auto mb-6 relative">
-                        <div class="absolute inset-0 rounded-full bg-gradient-to-r from-gold-400 to-indigo-600 blur-xl opacity-50 animate-pulse-slow"></div>
-                        <div class="relative w-full h-full rounded-full overflow-hidden border-4 border-gold-400/20 shadow-2xl animate-float">
-                            <img src="logopng.webp" alt="PRAGYANOM Logo" class="w-full h-full object-cover">
-                        </div>
-                        <!-- Orbiting Elements -->
-                        <div class="absolute inset-0 animate-rotate-slow" style="animation-duration: 15s;">
-                            <div class="absolute -top-2 left-1/2 w-4 h-4 bg-gold-400 rounded-full shadow-lg shadow-gold-400/50"></div>
-                        </div>
-                    </div>
-                    
-                    <h2 class="font-display text-3xl font-bold mb-2 text-white">Welcome Back, Scholar</h2>
-                    <div class="h-8 flex items-center justify-center">
-                        <p class="text-slate-300 font-body italic text-lg">
-                            "<span id="motivational-text"></span><span class="typewriter-cursor"></span>"
-                        </p>
-                    </div>
-                </div>
+                <h2 class="text-3xl font-display font-bold mb-2">Welcome, Scholar</h2>
+                <p class="text-slate-400 italic font-body text-lg">
+                    "<span id="motivational-text"></span><span class="typewriter-cursor text-gold-400">|</span>"
+                </p>
             </div>
 
-            <!-- Quick Stats -->
             <div class="grid grid-cols-3 gap-3 mb-8">
-                <div class="glass-card rounded-2xl p-4 text-center selection-card stagger-1">
-                    <div class="w-10 h-10 mx-auto mb-2 rounded-full bg-indigo-500/20 flex items-center justify-center">
-                        <i data-lucide="book-open" class="w-5 h-5 text-indigo-400"></i>
-                    </div>
-                    <p class="text-2xl font-bold text-white" id="stat-notes">0</p>
-                    <p class="text-xs text-slate-400">Notes</p>
+                <div class="glass-card rounded-2xl p-4 text-center">
+                    <i data-lucide="book-open" class="w-5 h-5 mx-auto mb-2 text-indigo-400"></i>
+                    <p class="text-xl font-bold">12</p>
+                    <p class="text-[10px] uppercase text-slate-500">Notes</p>
                 </div>
-                <div class="glass-card rounded-2xl p-4 text-center selection-card stagger-2">
-                    <div class="w-10 h-10 mx-auto mb-2 rounded-full bg-gold-500/20 flex items-center justify-center">
-                        <i data-lucide="play-circle" class="w-5 h-5 text-gold-400"></i>
-                    </div>
-                    <p class="text-2xl font-bold text-white" id="stat-videos">0</p>
-                    <p class="text-xs text-slate-400">Videos</p>
+                <div class="glass-card rounded-2xl p-4 text-center">
+                    <i data-lucide="play-circle" class="w-5 h-5 mx-auto mb-2 text-gold-400"></i>
+                    <p class="text-xl font-bold">8</p>
+                    <p class="text-[10px] uppercase text-slate-500">Videos</p>
                 </div>
-                <div class="glass-card rounded-2xl p-4 text-center selection-card stagger-3">
-                    <div class="w-10 h-10 mx-auto mb-2 rounded-full bg-emerald-500/20 flex items-center justify-center">
-                        <i data-lucide="target" class="w-5 h-5 text-emerald-400"></i>
-                    </div>
-                    <p class="text-2xl font-bold text-white" id="stat-tests">0</p>
-                    <p class="text-xs text-slate-400">Tests</p>
-                </div>
-            </div>
-
-            <!-- Continue Learning -->
-            <div class="mb-8 selection-card stagger-4">
-                <div class="flex items-center justify-between mb-4">
-                    <h3 class="font-display text-xl font-semibold text-white">Continue Learning</h3>
-                    <button class="text-gold-400 text-sm font-medium flex items-center gap-1 hover:text-gold-300 transition-colors">
-                        View All <i data-lucide="chevron-right" class="w-4 h-4"></i>
-                    </button>
-                </div>
-                
-                <div class="glass-card rounded-2xl p-4 relative overflow-hidden group cursor-pointer" onclick="navigateTo('notes')">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-indigo-600/20 to-transparent rounded-bl-full"></div>
-                    <div class="flex items-start gap-4">
-                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-indigo-500 to-indigo-700 flex items-center justify-center shadow-lg shadow-indigo-500/30 group-hover:scale-110 transition-transform">
-                            <i data-lucide="calculator" class="w-7 h-7 text-white"></i>
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex items-center gap-2 mb-1">
-                                <span class="px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 text-xs font-medium">Class 10</span>
-                                <span class="px-2 py-0.5 rounded-full bg-gold-500/20 text-gold-300 text-xs font-medium">Premium</span>
-                            </div>
-                            <h4 class="font-semibold text-white mb-1">Advanced Mathematics</h4>
-                            <p class="text-sm text-slate-400 mb-3">Chapter 8: Introduction to Trigonometry</p>
-                            <div class="flex items-center gap-3">
-                                <div class="flex-1 h-2 bg-slate-700 rounded-full overflow-hidden">
-                                    <div class="h-full bg-gradient-to-r from-indigo-500 to-gold-400 rounded-full" style="width: 65%"></div>
-                                </div>
-                                <span class="text-xs text-slate-400">65%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Recent Notifications Preview -->
-            <div class="selection-card stagger-5">
-                <div class="flex items-center justify-between mb-4">
-                    <h3 class="font-display text-xl font-semibold text-white">Latest Updates</h3>
-                    <div class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></div>
-                </div>
-                <div id="home-notifications" class="space-y-3">
-                    <!-- Populated by JS -->
+                <div class="glass-card rounded-2xl p-4 text-center">
+                    <i data-lucide="award" class="w-5 h-5 mx-auto mb-2 text-emerald-400"></i>
+                    <p class="text-xl font-bold">85%</p>
+                    <p class="text-[10px] uppercase text-slate-500">Score</p>
                 </div>
             </div>
         </section>
 
-        <!-- NOTES PAGE -->
-        <section id="page-notes" class="page px-4 py-6 max-w-lg mx-auto">
-            <div class="mb-6">
-                <h2 class="font-display text-3xl font-bold text-white mb-2">Study Notes</h2>
-                <p class="text-slate-400">Comprehensive notes for your academic success</p>
+        <section id="page-notes" class="page">
+            <h2 class="text-3xl font-display font-bold mb-6">Study Notes</h2>
+            
+            <div id="notes-step-1">
+                <p class="text-gold-400 font-semibold mb-4">Select Class</p>
+                <div class="grid grid-cols-2 gap-4">
+                    <button onclick="selectClass(9, 'notes')" class="glass-card p-6 rounded-2xl text-center">
+                        <span class="text-2xl font-bold block">Class 9</span>
+                        <span class="text-xs text-slate-500">SEBA Board</span>
+                    </button>
+                    <button onclick="selectClass(10, 'notes')" class="glass-card p-6 rounded-2xl text-center">
+                        <span class="text-2xl font-bold block">Class 10</span>
+                        <span class="text-xs text-slate-500">HSLC Board</span>
+                    </button>
+                </div>
             </div>
 
-            <!-- Selection Flow -->
-            <div id="notes-flow">
-                <!-- Step 1: Select Class -->
-                <div id="notes-step-1" class="step-container">
-                    <h3 class="text-lg font-semibold text-gold-400 mb-4 flex items-center gap-2">
-                        <span class="w-8 h-8 rounded-full bg-gold-500/20 flex items-center justify-center text-sm">1</span>
-                        Select Your Class
-                    </h3>
-                    <div class="grid grid-cols-2 gap-4">
-                        <button onclick="selectClass(9, 'notes')" class="glass-card rounded-2xl p-6 text-center ripple group hover:border-gold-400/50 transition-all">
-                   
+            <div id="notes-step-2" class="hidden">
+                <button onclick="resetFlow('notes')" class="mb-4 text-slate-400 flex items-center gap-2"><i data-lucide="arrow-left" class="w-4 h-4"></i> Back</button>
+                <div id="notes-subjects" class="grid grid-cols-2 gap-3"></div>
+            </div>
+
+            <div id="notes-step-3" class="hidden">
+                <div class="flex items-center justify-between mb-6">
+                    <button onclick="goBack('notes', 2)" class="text-slate-400"><i data-lucide="arrow-left" class="w-6 h-6"></i></button>
+                    <div class="text-right">
+                        <h3 id="notes-subject-title" class="font-bold text-white"></h3>
+                        <p id="notes-class-indicator" class="text-xs text-gold-400"></p>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between mb-6 p-4 glass-card rounded-2xl border-indigo-500/30">
+                    <span class="text-sm font-medium">Premium Access</span>
+                    <button id="premium-toggle" onclick="togglePremium()" class="relative w-12 h-6 rounded-full bg-slate-700">
+                        <div id="premium-knob" class="absolute top-1 left-1 w-4 h-4 rounded-full bg-white"></div>
+                    </button>
+                </div>
+
+                <div id="notes-content" class="space-y-3"></div>
+            </div>
+        </section>
+
+        <section id="page-videos" class="page">
+            <h2 class="text-3xl font-display font-bold mb-6">Video Lessons</h2>
+            <div class="glass-card p-8 rounded-2xl text-center">
+                <i data-lucide="video" class="w-12 h-12 mx-auto mb-4 text-slate-600"></i>
+                <p>Select your class to begin visual learning.</p>
+                <button onclick="selectClass(10, 'videos')" class="mt-4 px-6 py-2 bg-gold-500 rounded-full text-sm font-bold">Class 10 Videos</button>
+            </div>
+        </section>
+
+    </main>
+
+    <nav class="fixed bottom-0 left-0 right-0 glass z-50 py-3">
+        <div class="max-w-lg mx-auto flex justify-around">
+            <button onclick="navigateTo('home')" class="nav-item active flex flex-col items-center gap-1">
+                <i data-lucide="home" class="w-6 h-6"></i>
+                <span class="text-[10px] font-bold">HOME</span>
+            </button>
+            <button onclick="navigateTo('notes')" class="nav-item flex flex-col items-center gap-1">
+                <i data-lucide="book-open" class="w-6 h-6"></i>
+                <span class="text-[10px] font-bold">NOTES</span>
+            </button>
+            <button onclick="navigateTo('videos')" class="nav-item flex flex-col items-center gap-1">
+                <i data-lucide="play-circle" class="w-6 h-6"></i>
+                <span class="text-[10px] font-bold">VIDEOS</span>
+            </button>
+        </div>
+    </nav>
+
+    <script>
+        const appConfig = {
+            motivationalQuotes: ["Education is the passport to the future", "Success is the sum of small efforts", "Believe you can and you're halfway there"],
+            classes: {
+                9: { subjects: ["Mathematics", "General Science", "English"] },
+                10: { subjects: ["Mathematics", "General Science", "Assamese", "Social Science"] }
+            },
+            content: {
+                notes: {
+                    "Class 10": {
+                        "General Science": {
+                            free: [{ title: "Chemical Reactions", chapter: 1, pages: 15, size: "3.4 MB" }],
+                            premium: [{ title: "Life Processes", chapter: 5, pages: 22, size: "5.5 MB" }, { title: "Light - Reflection", chapter: 10, pages: 18, size: "4.1 MB" }]
+                        },
+                        "Mathematics": {
+                            free: [{ title: "Real Numbers", chapter: 1, pages: 12, size: "2.5 MB" }],
+                            premium: [{ title: "Trigonometry", chapter: 8, pages: 20, size: "4.7 MB" }]
+                        }
+                    }
+                }
+            }
+        };
+
+        const state = { currentPage: 'home', selectedClass: null, selectedSubject: null, premiumMode: false };
+
+        function init() {
+            lucide.createIcons();
+            startTypewriter();
+        }
+
+        function startTypewriter() {
+            let i = 0;
+            let textIdx = 0;
+            const target = document.getElementById('motivational-text');
+            function type() {
+                let currentQuote = appConfig.motivationalQuotes[textIdx];
+                if (i < currentQuote.length) {
+                    target.textContent += currentQuote.charAt(i);
+                    i++;
+                    setTimeout(type, 80);
+                } else {
+                    setTimeout(() => {
+                        target.textContent = "";
+                        i = 0;
+                        textIdx = (textIdx + 1) % appConfig.motivationalQuotes.length;
+                        type();
+                    }, 3000);
+                }
+            }
+            type();
+        }
+
+        function navigateTo(page) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(`page-${page}`).classList.add('active');
+            
+            document.querySelectorAll('.nav-item').forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.innerText.toLowerCase().includes(page)) btn.classList.add('active');
+            });
+            state.currentPage = page;
+            lucide.createIcons();
+        }
+
+        function selectClass(num, type) {
+            state.selectedClass = num;
+            document.getElementById(`${type}-step-1`).classList.add('hidden');
+            document.getElementById(`${type}-step-2`).classList.remove('hidden');
+            
+            const container = document.getElementById(`${type}-subjects`);
+            container.innerHTML = '';
+            appConfig.classes[num].subjects.forEach(sub => {
+                const btn = document.createElement('button');
+                btn.className = 'glass-card p-4 rounded-xl text-sm font-bold';
+                btn.innerHTML = `<i data-lucide="book" class="w-4 h-4 mx-auto mb-2 text-gold-400"></i> ${sub}`;
+                btn.onclick = () => selectSubject(sub, type);
+                container.appendChild(btn);
+            });
+            lucide.createIcons();
+        }
+
+        function selectSubject(sub, type) {
+            state.selectedSubject = sub;
+            document.getElementById(`${type}-step-2`).classList.add('hidden');
+            document.getElementById(`${type}-step-3`).classList.remove('hidden');
+            document.getElementById(`${type}-subject-title`).innerText = sub;
+            document.getElementById(`${type}-class-indicator`).innerText = `Class ${state.selectedClass} • SEBA`;
+            
+            if(type === 'notes') renderNotes();
+            lucide.createIcons();
+        }
+
+        function renderNotes() {
+            const container = document.getElementById('notes-content');
+            const data = appConfig.content.notes[`Class ${state.selectedClass}`]?.[state.selectedSubject];
+            container.innerHTML = '';
+
+            if(!data) {
+                container.innerHTML = '<p class="text-center text-slate-500 py-10">Coming Soon...</p>';
+                return;
+            }
+
+            data.free.forEach(item => container.appendChild(createCard(item, false)));
+            if(state.premiumMode) {
+                data.premium.forEach(item => container.appendChild(createCard(item, true)));
+            } else {
+                const teaser = document.createElement('div');
+                teaser.className = "p-6 border-2 border-dashed border-gold-500/30 rounded-2xl text-center text-gold-400 font-bold cursor-pointer";
+                teaser.innerText = "Unlock Premium Chapters";
+                teaser.onclick = togglePremium;
+                container.appendChild(teaser);
+            }
+            lucide.createIcons();
+        }
+
+        function createCard(item, isPremium) {
+            const div = document.createElement('div');
+            div.className = "glass-card p-4 rounded-2xl flex items-center justify-between";
+            div.innerHTML = `
+                <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 rounded-lg ${isPremium ? 'bg-gold-500' : 'bg-indigo-600'} flex items-center justify-center">
+                        <i data-lucide="file-text" class="text-white w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold">${item.title} ${isPremium ? '⭐' : ''}</h4>
+                        <p class="text-[10px] text-slate-400">Chapter ${item.chapter} • ${item.size}</p>
+                    </div>
+                </div>
+                <i data-lucide="download" class="w-4 h-4 text-slate-500"></i>
+            `;
+            return div;
+        }
+
+        function togglePremium() {
+            state.premiumMode = !state.premiumMode;
+            const knob = document.getElementById('premium-knob');
+            const bg = document.getElementById('premium-toggle');
+            knob.style.transform = state.premiumMode ? 'translateX(24px)' : 'translateX(0px)';
+            bg.style.background = state.premiumMode ? '#f59e0b' : '#334155';
+            if(state.selectedSubject) renderNotes();
+        }
+
+        function resetFlow(type) {
+            document.getElementById(`${type}-step-1`).classList.remove('hidden');
+            document.getElementById(`${type}-step-2`).classList.add('hidden');
+        }
+
+        function goBack(type, step) {
+            document.getElementById(`${type}-step-2`).classList.remove('hidden');
+            document.getElementById(`${type}-step-3`).classList.add('hidden');
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+    </html>
+    
