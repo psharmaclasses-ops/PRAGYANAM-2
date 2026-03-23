@@ -4,53 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#1e1b4b">
-    <title>PRAGYANOM - Premium Education Platform</title>
+    <title>PRAGYANOM</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&family=Crimson+Pro:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        indigo: { 950: '#0f0a1e', 900: '#1e1b4b', 500: '#6366f1' },
-                        gold: { 500: '#f59e0b', 400: '#fbbf24' }
-                    },
-                    fontFamily: { 'display': ['Playfair Display', 'serif'], 'sans': ['Inter', 'sans-serif'], 'body': ['Crimson Pro', 'serif'] },
-                    animation: { 'float': 'float 6s ease-in-out infinite', 'rotate-slow': 'rotate 20s linear infinite' },
-                    keyframes: {
-                        float: { '0%, 100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-20px)' } },
-                        rotate: { 'from': { transform: 'rotate(0deg)' }, 'to': { transform: 'rotate(360deg)' } }
-                    }
-                }
-            }
-        }
-    </script>
-    
     <style>
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-thumb { background: #fbbf24; border-radius: 5px; }
-        
-        .bg-mesh {
-            background: radial-gradient(at 40% 20%, rgba(67, 56, 202, 0.4) 0px, transparent 50%),
-                        radial-gradient(at 80% 0%, rgba(245, 158, 11, 0.3) 0px, transparent 50%), #0f0a1e;
-            background-attachment: fixed;
-        }
-
-        .glass { background: rgba(30, 27, 75, 0.7); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .glass-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; }
+        .bg-mesh { background: radial-gradient(at 50% 0%, #1e1b4b 0%, #0f0a1e 100%); background-attachment: fixed; }
+        .glass { background: rgba(30, 27, 75, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .glass-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
         .gradient-text { background: linear-gradient(135deg, #fbbf24, #f59e0b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
-        .page { display: none; animation: fadeIn 0.4s ease-out forwards; }
-        .page.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        /* Fixed visibility: All pages hidden except the one with .active */
+        .page { display: none; }
+        .page.active { display: block !important; }
 
-        #premium-knob { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        #premium-knob { transition: transform 0.3s ease; }
         .nav-item.active { color: #fbbf24; }
-        .typewriter-cursor { animation: blink 1s step-end infinite; }
-        @keyframes blink { 50% { opacity: 0; } }
     </style>
 </head>
 
@@ -59,16 +30,10 @@
     <header class="fixed top-0 left-0 right-0 z-50 glass px-4 py-3">
         <div class="max-w-lg mx-auto flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full border-2 border-gold-400/30 overflow-hidden">
-                    <img src="logopng.webp" alt="Logo" class="w-full h-full object-cover">
-                </div>
-                <div>
-                    <h1 class="font-display text-xl font-bold gradient-text">PRAGYANOM</h1>
-                </div>
+                <img src="logopng.webp" class="w-10 h-10 rounded-full border border-gold-400/30">
+                <h1 class="font-bold gradient-text text-lg">PRAGYANOM</h1>
             </div>
-            <button class="w-10 h-10 rounded-full glass flex items-center justify-center">
-                <i data-lucide="user" class="w-5 h-5 text-gold-400"></i>
-            </button>
+            <i data-lucide="user" class="text-gold-400 w-6 h-6"></i>
         </div>
     </header>
 
@@ -77,260 +42,115 @@
     <main class="max-w-lg mx-auto px-4">
         
         <section id="page-home" class="page active">
-            <div class="text-center py-10">
-                <div class="w-32 h-32 mx-auto mb-6 relative animate-float">
-                    <div class="absolute inset-0 rounded-full bg-gold-400/20 blur-xl"></div>
-                    <img src="logopng.webp" class="relative w-full h-full rounded-full border-4 border-gold-400/20">
-                </div>
-                <h2 class="text-3xl font-display font-bold mb-2">Welcome, Scholar</h2>
-                <p class="text-slate-400 italic font-body text-lg">
-                    "<span id="motivational-text"></span><span class="typewriter-cursor text-gold-400">|</span>"
-                </p>
+            <div class="text-center py-8">
+                <img src="logopng.webp" class="w-28 h-28 mx-auto mb-4 rounded-full border-4 border-gold-400/20 shadow-2xl">
+                <h2 class="text-3xl font-bold mb-2">Welcome Back, Scholar</h2>
+                <p id="motivational-text" class="text-slate-400 italic h-6">"Start your journey today"</p>
             </div>
 
             <div class="grid grid-cols-3 gap-3 mb-8">
                 <div class="glass-card rounded-2xl p-4 text-center">
-                    <i data-lucide="book-open" class="w-5 h-5 mx-auto mb-2 text-indigo-400"></i>
+                    <i data-lucide="book-open" class="w-5 h-5 mx-auto mb-1 text-indigo-400"></i>
                     <p class="text-xl font-bold">12</p>
-                    <p class="text-[10px] uppercase text-slate-500">Notes</p>
+                    <p class="text-[10px] text-slate-500">NOTES</p>
                 </div>
                 <div class="glass-card rounded-2xl p-4 text-center">
-                    <i data-lucide="play-circle" class="w-5 h-5 mx-auto mb-2 text-gold-400"></i>
+                    <i data-lucide="play-circle" class="w-5 h-5 mx-auto mb-1 text-gold-400"></i>
                     <p class="text-xl font-bold">8</p>
-                    <p class="text-[10px] uppercase text-slate-500">Videos</p>
+                    <p class="text-[10px] text-slate-500">VIDEOS</p>
                 </div>
                 <div class="glass-card rounded-2xl p-4 text-center">
-                    <i data-lucide="award" class="w-5 h-5 mx-auto mb-2 text-emerald-400"></i>
+                    <i data-lucide="target" class="w-5 h-5 mx-auto mb-1 text-emerald-400"></i>
                     <p class="text-xl font-bold">85%</p>
-                    <p class="text-[10px] uppercase text-slate-500">Score</p>
+                    <p class="text-[10px] text-slate-500">SCORE</p>
+                </div>
+            </div>
+
+            <div class="glass-card rounded-2xl p-4 mb-4">
+                <h3 class="font-bold mb-2">Continue Learning</h3>
+                <div class="flex items-center gap-4 bg-white/5 p-3 rounded-xl" onclick="navigateTo('notes')">
+                    <div class="w-10 h-10 bg-indigo-500 rounded-lg flex items-center justify-center">
+                        <i data-lucide="atom" class="text-white"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm font-bold">General Science</p>
+                        <p class="text-xs text-slate-400">Chapter 5: Life Processes</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section id="page-notes" class="page">
-            <h2 class="text-3xl font-display font-bold mb-6">Study Notes</h2>
-            
-            <div id="notes-step-1">
-                <p class="text-gold-400 font-semibold mb-4">Select Class</p>
-                <div class="grid grid-cols-2 gap-4">
-                    <button onclick="selectClass(9, 'notes')" class="glass-card p-6 rounded-2xl text-center">
-                        <span class="text-2xl font-bold block">Class 9</span>
-                        <span class="text-xs text-slate-500">SEBA Board</span>
-                    </button>
-                    <button onclick="selectClass(10, 'notes')" class="glass-card p-6 rounded-2xl text-center">
-                        <span class="text-2xl font-bold block">Class 10</span>
-                        <span class="text-xs text-slate-500">HSLC Board</span>
-                    </button>
-                </div>
+            <h2 class="text-2xl font-bold mb-4">Study Notes</h2>
+            <div id="notes-step-1" class="grid grid-cols-2 gap-4">
+                <button onclick="selectClass(9)" class="glass-card p-6 rounded-2xl text-center">Class 9</button>
+                <button onclick="selectClass(10)" class="glass-card p-6 rounded-2xl text-center">Class 10</button>
             </div>
-
-            <div id="notes-step-2" class="hidden">
-                <button onclick="resetFlow('notes')" class="mb-4 text-slate-400 flex items-center gap-2"><i data-lucide="arrow-left" class="w-4 h-4"></i> Back</button>
-                <div id="notes-subjects" class="grid grid-cols-2 gap-3"></div>
-            </div>
-
-            <div id="notes-step-3" class="hidden">
-                <div class="flex items-center justify-between mb-6">
-                    <button onclick="goBack('notes', 2)" class="text-slate-400"><i data-lucide="arrow-left" class="w-6 h-6"></i></button>
-                    <div class="text-right">
-                        <h3 id="notes-subject-title" class="font-bold text-white"></h3>
-                        <p id="notes-class-indicator" class="text-xs text-gold-400"></p>
-                    </div>
-                </div>
-
-                <div class="flex items-center justify-between mb-6 p-4 glass-card rounded-2xl border-indigo-500/30">
-                    <span class="text-sm font-medium">Premium Access</span>
-                    <button id="premium-toggle" onclick="togglePremium()" class="relative w-12 h-6 rounded-full bg-slate-700">
-                        <div id="premium-knob" class="absolute top-1 left-1 w-4 h-4 rounded-full bg-white"></div>
-                    </button>
-                </div>
-
-                <div id="notes-content" class="space-y-3"></div>
+            <div id="notes-step-2" class="hidden space-y-3">
+                <button onclick="resetFlow()" class="text-slate-400 text-sm mb-2">← Change Class</button>
+                <div id="subject-list" class="grid grid-cols-1 gap-2"></div>
             </div>
         </section>
 
         <section id="page-videos" class="page">
-            <h2 class="text-3xl font-display font-bold mb-6">Video Lessons</h2>
-            <div class="glass-card p-8 rounded-2xl text-center">
-                <i data-lucide="video" class="w-12 h-12 mx-auto mb-4 text-slate-600"></i>
-                <p>Select your class to begin visual learning.</p>
-                <button onclick="selectClass(10, 'videos')" class="mt-4 px-6 py-2 bg-gold-500 rounded-full text-sm font-bold">Class 10 Videos</button>
-            </div>
+            <h2 class="text-2xl font-bold mb-4">Video Lessons</h2>
+            <p class="text-slate-400">Coming soon in the next update!</p>
         </section>
 
     </main>
 
-    <nav class="fixed bottom-0 left-0 right-0 glass z-50 py-3">
+    <nav class="fixed bottom-0 left-0 right-0 glass py-3">
         <div class="max-w-lg mx-auto flex justify-around">
-            <button onclick="navigateTo('home')" class="nav-item active flex flex-col items-center gap-1">
+            <button onclick="navigateTo('home')" class="nav-item active flex flex-col items-center">
                 <i data-lucide="home" class="w-6 h-6"></i>
-                <span class="text-[10px] font-bold">HOME</span>
+                <span class="text-[10px]">HOME</span>
             </button>
-            <button onclick="navigateTo('notes')" class="nav-item flex flex-col items-center gap-1">
+            <button onclick="navigateTo('notes')" class="nav-item flex flex-col items-center">
                 <i data-lucide="book-open" class="w-6 h-6"></i>
-                <span class="text-[10px] font-bold">NOTES</span>
+                <span class="text-[10px]">NOTES</span>
             </button>
-            <button onclick="navigateTo('videos')" class="nav-item flex flex-col items-center gap-1">
+            <button onclick="navigateTo('videos')" class="nav-item flex flex-col items-center">
                 <i data-lucide="play-circle" class="w-6 h-6"></i>
-                <span class="text-[10px] font-bold">VIDEOS</span>
+                <span class="text-[10px]">VIDEOS</span>
             </button>
         </div>
     </nav>
 
     <script>
-        const appConfig = {
-            motivationalQuotes: ["Education is the passport to the future", "Success is the sum of small efforts", "Believe you can and you're halfway there"],
-            classes: {
-                9: { subjects: ["Mathematics", "General Science", "English"] },
-                10: { subjects: ["Mathematics", "General Science", "Assamese", "Social Science"] }
-            },
-            content: {
-                notes: {
-                    "Class 10": {
-                        "General Science": {
-                            free: [{ title: "Chemical Reactions", chapter: 1, pages: 15, size: "3.4 MB" }],
-                            premium: [{ title: "Life Processes", chapter: 5, pages: 22, size: "5.5 MB" }, { title: "Light - Reflection", chapter: 10, pages: 18, size: "4.1 MB" }]
-                        },
-                        "Mathematics": {
-                            free: [{ title: "Real Numbers", chapter: 1, pages: 12, size: "2.5 MB" }],
-                            premium: [{ title: "Trigonometry", chapter: 8, pages: 20, size: "4.7 MB" }]
-                        }
-                    }
-                }
-            }
-        };
-
-        const state = { currentPage: 'home', selectedClass: null, selectedSubject: null, premiumMode: false };
-
-        function init() {
-            lucide.createIcons();
-            startTypewriter();
-        }
-
-        function startTypewriter() {
-            let i = 0;
-            let textIdx = 0;
-            const target = document.getElementById('motivational-text');
-            function type() {
-                let currentQuote = appConfig.motivationalQuotes[textIdx];
-                if (i < currentQuote.length) {
-                    target.textContent += currentQuote.charAt(i);
-                    i++;
-                    setTimeout(type, 80);
-                } else {
-                    setTimeout(() => {
-                        target.textContent = "";
-                        i = 0;
-                        textIdx = (textIdx + 1) % appConfig.motivationalQuotes.length;
-                        type();
-                    }, 3000);
-                }
-            }
-            type();
-        }
-
+        const subs = ["Mathematics", "General Science", "English", "Assamese"];
+        
         function navigateTo(page) {
+            // Hide all
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById(`page-${page}`).classList.add('active');
+            // Show one
+            const target = document.getElementById('page-' + page);
+            if(target) target.classList.add('active');
             
-            document.querySelectorAll('.nav-item').forEach(btn => {
-                btn.classList.remove('active');
-                if(btn.innerText.toLowerCase().includes(page)) btn.classList.add('active');
-            });
-            state.currentPage = page;
+            // Update icons
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+            
             lucide.createIcons();
         }
 
-        function selectClass(num, type) {
-            state.selectedClass = num;
-            document.getElementById(`${type}-step-1`).classList.add('hidden');
-            document.getElementById(`${type}-step-2`).classList.remove('hidden');
-            
-            const container = document.getElementById(`${type}-subjects`);
-            container.innerHTML = '';
-            appConfig.classes[num].subjects.forEach(sub => {
-                const btn = document.createElement('button');
-                btn.className = 'glass-card p-4 rounded-xl text-sm font-bold';
-                btn.innerHTML = `<i data-lucide="book" class="w-4 h-4 mx-auto mb-2 text-gold-400"></i> ${sub}`;
-                btn.onclick = () => selectSubject(sub, type);
-                container.appendChild(btn);
+        function selectClass(val) {
+            document.getElementById('notes-step-1').classList.add('hidden');
+            document.getElementById('notes-step-2').classList.remove('hidden');
+            const list = document.getElementById('subject-list');
+            list.innerHTML = '';
+            subs.forEach(s => {
+                list.innerHTML += `<button class="glass-card p-4 rounded-xl text-left flex justify-between">${s} <i data-lucide="chevron-right"></i></button>`;
             });
             lucide.createIcons();
         }
 
-        function selectSubject(sub, type) {
-            state.selectedSubject = sub;
-            document.getElementById(`${type}-step-2`).classList.add('hidden');
-            document.getElementById(`${type}-step-3`).classList.remove('hidden');
-            document.getElementById(`${type}-subject-title`).innerText = sub;
-            document.getElementById(`${type}-class-indicator`).innerText = `Class ${state.selectedClass} • SEBA`;
-            
-            if(type === 'notes') renderNotes();
-            lucide.createIcons();
+        function resetFlow() {
+            document.getElementById('notes-step-1').classList.remove('hidden');
+            document.getElementById('notes-step-2').classList.add('hidden');
         }
 
-        function renderNotes() {
-            const container = document.getElementById('notes-content');
-            const data = appConfig.content.notes[`Class ${state.selectedClass}`]?.[state.selectedSubject];
-            container.innerHTML = '';
-
-            if(!data) {
-                container.innerHTML = '<p class="text-center text-slate-500 py-10">Coming Soon...</p>';
-                return;
-            }
-
-            data.free.forEach(item => container.appendChild(createCard(item, false)));
-            if(state.premiumMode) {
-                data.premium.forEach(item => container.appendChild(createCard(item, true)));
-            } else {
-                const teaser = document.createElement('div');
-                teaser.className = "p-6 border-2 border-dashed border-gold-500/30 rounded-2xl text-center text-gold-400 font-bold cursor-pointer";
-                teaser.innerText = "Unlock Premium Chapters";
-                teaser.onclick = togglePremium;
-                container.appendChild(teaser);
-            }
-            lucide.createIcons();
-        }
-
-        function createCard(item, isPremium) {
-            const div = document.createElement('div');
-            div.className = "glass-card p-4 rounded-2xl flex items-center justify-between";
-            div.innerHTML = `
-                <div class="flex items-center gap-4">
-                    <div class="w-10 h-10 rounded-lg ${isPremium ? 'bg-gold-500' : 'bg-indigo-600'} flex items-center justify-center">
-                        <i data-lucide="file-text" class="text-white w-5 h-5"></i>
-                    </div>
-                    <div>
-                        <h4 class="text-sm font-bold">${item.title} ${isPremium ? '⭐' : ''}</h4>
-                        <p class="text-[10px] text-slate-400">Chapter ${item.chapter} • ${item.size}</p>
-                    </div>
-                </div>
-                <i data-lucide="download" class="w-4 h-4 text-slate-500"></i>
-            `;
-            return div;
-        }
-
-        function togglePremium() {
-            state.premiumMode = !state.premiumMode;
-            const knob = document.getElementById('premium-knob');
-            const bg = document.getElementById('premium-toggle');
-            knob.style.transform = state.premiumMode ? 'translateX(24px)' : 'translateX(0px)';
-            bg.style.background = state.premiumMode ? '#f59e0b' : '#334155';
-            if(state.selectedSubject) renderNotes();
-        }
-
-        function resetFlow(type) {
-            document.getElementById(`${type}-step-1`).classList.remove('hidden');
-            document.getElementById(`${type}-step-2`).classList.add('hidden');
-        }
-
-        function goBack(type, step) {
-            document.getElementById(`${type}-step-2`).classList.remove('hidden');
-            document.getElementById(`${type}-step-3`).classList.add('hidden');
-        }
-
-        document.addEventListener('DOMContentLoaded', init);
+        // Initialize Icons
+        window.onload = () => { lucide.createIcons(); };
     </script>
 </body>
-    </html>
-    
+</html>
