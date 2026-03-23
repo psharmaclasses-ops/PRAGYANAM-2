@@ -2,642 +2,463 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRAGYANOM - Educational Excellence</title>
-    
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="./manifest.json">
-    
-    <!-- Favicon - Multiple fallback options -->
-    <link rel="icon" type="image/webp" href="./logopng.webp">
-    <link rel="icon" type="image/png" href="./logo.png">
-    <link rel="apple-touch-icon" href="./logopng.webp">
-    
-    <!-- Theme Color -->
-    <meta name="theme-color" content="#667eea">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#1e1b4b">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>PRAGYANOM - Premium Education Platform</title>
     
-    <!-- Fonts -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;800&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lottie Animation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        indigo: {
+                            950: '#0f0a1e',
+                            900: '#1e1b4b',
+                            800: '#312e81',
+                            700: '#4338ca',
+                            600: '#4f46e5',
+                            500: '#6366f1',
+                            400: '#818cf8',
+                            300: '#a5b4fc',
+                            200: '#c7d2fe',
+                            100: '#e0e7ff',
+                            50: '#eef2ff',
+                        },
+                        gold: {
+                            500: '#f59e0b',
+                            400: '#fbbf24',
+                            300: '#fcd34d',
+                            200: '#fde68a',
+                            100: '#fef3c7',
+                            50: '#fffbeb',
+                        },
+                        slate: {
+                            950: '#020617',
+                            900: '#0f172a',
+                            800: '#1e293b',
+                            700: '#334155',
+                            600: '#475569',
+                            500: '#64748b',
+                            400: '#94a3b8',
+                            300: '#cbd5e1',
+                            200: '#e2e8f0',
+                            100: '#f1f5f9',
+                            50: '#f8fafc',
+                        }
+                    },
+                    fontFamily: {
+                        'display': ['Playfair Display', 'serif'],
+                        'sans': ['Inter', 'sans-serif'],
+                        'body': ['Crimson Pro', 'serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'shimmer': 'shimmer 2s linear infinite',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'scale-in': 'scaleIn 0.5s ease-out',
+                        'rotate-slow': 'rotate 20s linear infinite',
+                        'bounce-subtle': 'bounceSubtle 2s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        shimmer: {
+                            '0%': { backgroundPosition: '-1000px 0' },
+                            '100%': { backgroundPosition: '1000px 0' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        scaleIn: {
+                            '0%': { transform: 'scale(0.9)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' },
+                        },
+                        bounceSubtle: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-5px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
         }
-
-        :root {
-            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --glass-bg: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.2);
-            --text-primary: #ffffff;
-            --text-secondary: rgba(255, 255, 255, 0.8);
-            --accent-gold: #ffd700;
-            --accent-cyan: #00d4ff;
-            --accent-rose: #ff6b9d;
-            --accent-emerald: #00ff88;
+        ::-webkit-scrollbar-track {
+            background: #0f0a1e;
         }
-
-        body {
-            font-family: 'Exo 2', sans-serif;
-            background: #0a0a0a;
-            color: var(--text-primary);
-            overflow-x: hidden;
-            min-height: 100vh;
-            line-height: 1.6;
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #f59e0b, #fbbf24);
+            border-radius: 3px;
         }
-
-        /* Animated Background */
-        .bg-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e22ce 100%);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
+        
+        /* Glassmorphism */
+        .glass {
+            background: rgba(30, 27, 75, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-
-        .bg-animation::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(99, 102, 241, 0.2) 0%, transparent 50%);
-            animation: float 20s ease-in-out infinite;
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+        
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -30px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
-        }
-
-        /* Header & Logo */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            padding: 1rem 2rem;
-            background: rgba(10, 10, 10, 0.9);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--glass-border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .logo-container {
-            position: relative;
-            width: 50px;
-            height: 50px;
-            animation: logoPulse 3s ease-in-out infinite;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .logo-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            border-radius: 50%;
-            box-shadow: 0 0 30px rgba(102, 126, 234, 0.6);
-        }
-
-        .logo-fallback {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
-            font-size: 1.5rem;
-            color: white;
-            box-shadow: 0 0 30px rgba(102, 126, 234, 0.6);
-        }
-
-        @keyframes logoPulse {
-            0%, 100% { transform: scale(1); filter: brightness(1); }
-            50% { transform: scale(1.05); filter: brightness(1.2); }
-        }
-
-        .brand-name {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #fff 0%, #a8b2ff 50%, #fff 100%);
-            background-size: 200% auto;
+        
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #fcd34d 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: 0 0 30px rgba(102, 126, 234, 0.5);
-            letter-spacing: 3px;
-            animation: textShine 3s linear infinite;
         }
-
-        @keyframes textShine {
-            0% { background-position: -200% center; }
-            100% { background-position: 200% center; }
+        
+        /* Animated Background */
+        .bg-mesh {
+            background: 
+                radial-gradient(at 40% 20%, rgba(67, 56, 202, 0.4) 0px, transparent 50%),
+                radial-gradient(at 80% 0%, rgba(245, 158, 11, 0.3) 0px, transparent 50%),
+                radial-gradient(at 0% 50%, rgba(79, 70, 229, 0.4) 0px, transparent 50%),
+                radial-gradient(at 80% 50%, rgba(245, 158, 11, 0.2) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(67, 56, 202, 0.4) 0px, transparent 50%),
+                #0f0a1e;
+            background-attachment: fixed;
         }
-
-        /* Main Container */
-        .main-container {
-            margin-top: 80px;
-            padding: 2rem;
-            max-width: 1400px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Home Section */
-        .home-section {
-            text-align: center;
-            padding: 3rem 1rem;
-            min-height: calc(100vh - 200px);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hero-logo {
-            width: 200px;
-            height: 200px;
-            margin-bottom: 2rem;
-            position: relative;
-            animation: heroFloat 6s ease-in-out infinite;
-        }
-
-        .hero-logo::before {
-            content: '';
-            position: absolute;
-            inset: -10px;
-            border-radius: 50%;
-            background: conic-gradient(from 0deg, transparent, var(--accent-cyan), transparent, var(--accent-rose), transparent);
-            animation: rotate 4s linear infinite;
-            opacity: 0.5;
-        }
-
-        .hero-logo img, .hero-logo .logo-fallback {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            border-radius: 50%;
-            position: relative;
-            z-index: 1;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-        }
-
-        @keyframes heroFloat {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        @keyframes rotate {
-            100% { transform: rotate(360deg); }
-        }
-
-        .motivational-text {
-            font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent-gold);
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
-            margin: 1rem 0;
-            opacity: 0;
-            animation: fadeInUp 1s ease forwards, textGlow 2s ease-in-out infinite alternate;
-            max-width: 800px;
-            line-height: 1.6;
-        }
-
-        .motivational-text:nth-child(2) { animation-delay: 0.2s; }
-        .motivational-text:nth-child(3) { animation-delay: 0.4s; color: var(--accent-cyan); }
-        .motivational-text:nth-child(4) { animation-delay: 0.6s; color: var(--accent-rose); }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes textGlow {
-            from { text-shadow: 0 0 20px currentColor; }
-            to { text-shadow: 0 0 40px currentColor, 0 0 60px currentColor; }
-        }
-
-        /* Navigation Grid */
-        .nav-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 4rem;
-            width: 100%;
-            max-width: 1200px;
-        }
-
-        .nav-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 2.5rem 2rem;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-        }
-
-        .nav-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .nav-card:hover::before {
-            left: 100%;
-        }
-
-        .nav-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-            border-color: rgba(255, 255, 255, 0.4);
-        }
-
-        .nav-icon {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
+        
+        /* Typewriter Cursor */
+        .typewriter-cursor {
             display: inline-block;
-            animation: iconBounce 2s ease-in-out infinite;
+            width: 3px;
+            height: 1em;
+            background: #fbbf24;
+            margin-left: 2px;
+            animation: blink 1s step-end infinite;
         }
-
-        @keyframes iconBounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .nav-card:nth-child(1) { background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2)); }
-        .nav-card:nth-child(1) .nav-icon { color: #a8b2ff; animation-delay: 0s; }
         
-        .nav-card:nth-child(2) { background: linear-gradient(135deg, rgba(255, 107, 157, 0.2), rgba(255, 142, 83, 0.2)); }
-        .nav-card:nth-child(2) .nav-icon { color: #ff8e53; animation-delay: 0.2s; }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
         
-        .nav-card:nth-child(3) { background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(0, 255, 136, 0.2)); }
-        .nav-card:nth-child(3) .nav-icon { color: #00ff88; animation-delay: 0.4s; }
-        
-        .nav-card:nth-child(4) { background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 107, 107, 0.2)); }
-        .nav-card:nth-child(4) .nav-icon { color: #ffd700; animation-delay: 0.6s; }
-
-        .nav-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            letter-spacing: 2px;
-        }
-
-        .nav-desc {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            line-height: 1.5;
-        }
-
-        /* Section Styles */
-        .section {
-            display: none;
-            animation: sectionFadeIn 0.6s ease;
-            min-height: calc(100vh - 100px);
-        }
-
-        .section.active {
-            display: block;
-        }
-
-        @keyframes sectionFadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-            padding: 2rem;
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 24px;
-            border: 1px solid var(--glass-border);
-        }
-
-        .section-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 900;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-        }
-
-        .back-btn {
-            position: fixed;
-            top: 100px;
-            left: 2rem;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            cursor: pointer;
-            font-family: 'Exo 2', sans-serif;
-            font-weight: 600;
-            transition: all 0.3s;
-            z-index: 100;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .back-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateX(-5px);
-        }
-
-        /* Class Selection */
-        .class-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .class-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 30px;
-            padding: 3rem 2rem;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.4s;
+        /* Premium Card Glow */
+        .premium-glow {
             position: relative;
             overflow: hidden;
         }
-
-        .class-card::after {
+        
+        .premium-glow::before {
             content: '';
             position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            background: linear-gradient(45deg, #f59e0b, #fbbf24, #fcd34d, #f59e0b);
+            border-radius: inherit;
+            z-index: -1;
             opacity: 0;
             transition: opacity 0.3s;
         }
-
-        .class-card:hover::after {
+        
+        .premium-glow:hover::before {
             opacity: 1;
+            animation: rotate 3s linear infinite;
         }
-
-        .class-card:hover {
-            transform: scale(1.05);
-            border-color: var(--accent-cyan);
-            box-shadow: 0 0 40px rgba(0, 212, 255, 0.3);
+        
+        /* Navigation Active State */
+        .nav-item {
+            position: relative;
+            transition: all 0.3s ease;
         }
-
-        .class-number {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 4rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #fff, var(--accent-cyan));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1rem;
+        
+        .nav-item.active {
+            color: #fbbf24;
         }
-
-        .class-label {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--text-secondary);
+        
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            background: #fbbf24;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #fbbf24;
         }
-
-        /* Subject Grid */
-        .subject-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
+        
+        /* Loading Skeleton */
+        .skeleton {
+            background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
+            background-size: 1000px 100%;
+            animation: shimmer 2s infinite linear;
         }
-
-        .subject-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 2rem;
-            cursor: pointer;
-            transition: all 0.3s;
+        
+        /* Ripple Effect */
+        .ripple {
             position: relative;
             overflow: hidden;
         }
-
-        .subject-card::before {
+        
+        .ripple::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--subject-color, var(--accent-cyan));
-            transform: scaleX(0);
-            transition: transform 0.3s;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
         }
-
-        .subject-card:hover::before {
-            transform: scaleX(1);
+        
+        .ripple:active::after {
+            width: 300px;
+            height: 300px;
         }
-
-        .subject-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-            border-color: var(--subject-color, var(--accent-cyan));
+        
+        /* Progress Ring */
+        .progress-ring {
+            transform: rotate(-90deg);
         }
-
-        .subject-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--subject-color, var(--accent-cyan));
+        
+        .progress-ring-circle {
+            transition: stroke-dashoffset 0.35s;
+            transform-origin: 50% 50%;
         }
-
-        .subject-name {
-            font-family: 'Cinzel', serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
+        
+        /* Hide scrollbar but keep functionality */
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
-
-        .content-options {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
         }
-
-        .content-btn {
-            flex: 1;
-            min-width: 100px;
-            padding: 0.8rem 1.2rem;
-            border: none;
-            border-radius: 12px;
-            font-family: 'Exo 2', sans-serif;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
+        
+        /* Page Transitions */
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
         }
-
-        .btn-free {
-            background: linear-gradient(135deg, #00ff88, #00d4ff);
-            color: #000;
+        
+        .page.active {
+            display: block;
         }
-
-        .btn-premium {
-            background: linear-gradient(135deg, #ffd700, #ff6b9d);
-            color: #000;
-        }
-
-        .content-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Notification Section */
-        .notification-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 24px;
-            padding: 3rem;
-            border: 1px solid var(--glass-border);
-            text-align: center;
-        }
-
-        .welcome-banner {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 107, 157, 0.2));
-            border-radius: 20px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border: 1px solid rgba(255, 215, 0, 0.3);
-        }
-
-        .welcome-text {
-            font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
-            color: var(--accent-gold);
-            margin-bottom: 1rem;
-            animation: textGlow 2s ease-in-out infinite alternate;
-        }
-
-        .notification-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            text-align: left;
-        }
-
-        .notification-item {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 1.5rem;
-            border-radius: 16px;
-            border-left: 4px solid var(--accent-cyan);
-            transition: all 0.3s;
-            animation: slideIn 0.5s ease forwards;
+        
+        /* Selection Card Animation */
+        .selection-card {
+            transform: scale(0.95);
             opacity: 0;
+            animation: scaleIn 0.4s ease-out forwards;
         }
-
-        .notification-item:nth-child(1) { animation-delay: 0.1s; }
-        .notification-item:nth-child(2) { animation-delay: 0.2s; }
-        .notification-item:nth-child(3) { animation-delay: 0.3s; }
-
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(-20px); }
-            to { opacity: 1; transform: translateX(0); }
+        
+        /* Stagger Animation Delays */
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        .stagger-5 { animation-delay: 0.5s; }
+        
+        /* Premium Badge */
+        .premium-badge {
+            background: linear-gradient(135deg, #f59e0b, #fbbf24);
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
         }
-
-        .notification-item:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateX(10px);
+        
+        /* Coming Soon Overlay */
+        .coming-soon-overlay {
+            background: rgba(15, 10, 30, 0.95);
+            backdrop-filter: blur(8px);
         }
-
-        .notif-date {
-            font-size: 0.85rem;
-            color: var(--accent-cyan);
-            margin-bottom: 0.5rem;
-            font-weight: 600;
+        
+        /* Touch Feedback */
+        @media (hover: none) {
+            .glass-card:active {
+                transform: scale(0.98);
+            }
         }
+    </style>
+</head>
+<body class="bg-mesh text-slate-100 font-sans antialiased min-h-screen overflow-x-hidden">
+    
+    <!-- App Container -->
+    <div id="app" class="relative min-h-screen pb-24">
+        
+        <!-- Header -->
+        <header class="fixed top-0 left-0 right-0 z-50 glass px-4 py-3 transition-all duration-300" id="header">
+            <div class="max-w-lg mx-auto flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-gold-400/30 shadow-lg shadow-gold-500/20">
+                        <img src="logopng.webp" alt="PRAGYANOM" class="w-full h-full object-cover animate-rotate-slow" id="header-logo">
+                    </div>
+                    <div>
+                        <h1 class="font-display text-xl font-bold gradient-text tracking-tight">PRAGYANOM</h1>
+                        <p class="text-xs text-slate-400 font-medium">Excellence in Education</p>
+                    </div>
+                </div>
+                <button id="profile-btn" class="w-10 h-10 rounded-full glass flex items-center justify-center ripple hover:bg-white/10 transition-colors">
+                    <i data-lucide="user" class="w-5 h-5 text-gold-400"></i>
+                </button>
+            </div>
+        </header>
 
-        .notif-title {
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
+        <!-- Spacer for Fixed Header -->
+        <div class="h-20"></div>
 
-        .notif-desc {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
+        <!-- HOME PAGE -->
+        <section id="page-home" class="page active px-4 py-6 max-w-lg mx-auto">
+            
+            <!-- Hero Section -->
+            <div class="relative mb-8 text-center">
+                <div class="absolute inset-0 flex items-center justify-center opacity-20 pointer-events-none">
+                    <div class="w-64 h-64 rounded-full bg-gradient-to-r from-indigo-600 to-gold-500 blur-3xl animate-pulse-slow"></div>
+                </div>
+                
+                <div class="relative z-10">
+                    <div class="w-32 h-32 mx-auto mb-6 relative">
+                        <div class="absolute inset-0 rounded-full bg-gradient-to-r from-gold-400 to-indigo-600 blur-xl opacity-50 animate-pulse-slow"></div>
+                        <div class="relative w-full h-full rounded-full overflow-hidden border-4 border-gold-400/20 shadow-2xl animate-float">
+                            <img src="logopng.webp" alt="PRAGYANOM Logo" class="w-full h-full object-cover">
+                        </div>
+                        <!-- Orbiting Elements -->
+                        <div class="absolute inset-0 animate-rotate-slow" style="animation-duration: 15s;">
+                            <div class="absolute -top-2 left-1/2 w-4 h-4 bg-gold-400 rounded-full shadow-lg shadow-gold-400/50"></div>
+                        </div>
+                    </div>
+                    
+                    <h2 class="font-display text-3xl font-bold mb-2 text-white">Welcome Back, Scholar</h2>
+                    <div class="h-8 flex items-center justify-center">
+                        <p class="text-slate-300 font-body italic text-lg">
+                            "<span id="motivational-text"></span><span class="typewriter-cursor"></span>"
+                        </p>
+                    </div>
+                </div>
+            </div>
 
-        /* Coming Soon Section */
-        .coming-soon-container {
-            text-align: center;
-            padding: 4rem 2rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
+            <!-- Quick Stats -->
+            <div class="grid grid-cols-3 gap-3 mb-8">
+                <div class="glass-card rounded-2xl p-4 text-center selection-card stagger-1">
+                    <div class="w-10 h-10 mx-auto mb-2 rounded-full bg-indigo-500/20 flex items-center justify-center">
+                        <i data-lucide="book-open" class="w-5 h-5 text-indigo-400"></i>
+                    </div>
+                    <p class="text-2xl font-bold text-white" id="stat-notes">0</p>
+                    <p class="text-xs text-slate-400">Notes</p>
+                </div>
+                <div class="glass-card rounded-2xl p-4 text-center selection-card stagger-2">
+                    <div class="w-10 h-10 mx-auto mb-2 rounded-full bg-gold-500/20 flex items-center justify-center">
+                        <i data-lucide="play-circle" class="w-5 h-5 text-gold-400"></i>
+                    </div>
+                    <p class="text-2xl font-bold text-white" id="stat-videos">0</p>
+                    <p class="text-xs text-slate-400">Videos</p>
+                </div>
+                <div class="glass-card rounded-2xl p-4 text-center selection-card stagger-3">
+                    <div class="w-10 h-10 mx-auto mb-2 rounded-full bg-emerald-500/20 flex items-center justify-center">
+                        <i data-lucide="target" class="w-5 h-5 text-emerald-400"></i>
+                    </div>
+                    <p class="text-2xl font-bold text-white" id="stat-tests">0</p>
+                    <p class="text-xs text-slate-400">Tests</p>
+                </div>
+            </div>
 
-        .construction-icon {
-            font-size: 6rem;
-            color: var(--accent-gold);
-            margin-bottom: 2rem;
-            animation: constructionBounce 2s ease-in-out infinite;
-        }
+            <!-- Continue Learning -->
+            <div class="mb-8 selection-card stagger-4">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="font-display text-xl font-semibold text-white">Continue Learning</h3>
+                    <button class="text-gold-400 text-sm font-medium flex items-center gap-1 hover:text-gold-300 transition-colors">
+                        View All <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+                
+                <div class="glass-card rounded-2xl p-4 relative overflow-hidden group cursor-pointer" onclick="navigateTo('notes')">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-indigo-600/20 to-transparent rounded-bl-full"></div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-indigo-500 to-indigo-700 flex items-center justify-center shadow-lg shadow-indigo-500/30 group-hover:scale-110 transition-transform">
+                            <i data-lucide="calculator" class="w-7 h-7 text-white"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 text-xs font-medium">Class 10</span>
+                                <span class="px-2 py-0.5 rounded-full bg-gold-500/20 text-gold-300 text-xs font-medium">Premium</span>
+                            </div>
+                            <h4 class="font-semibold text-white mb-1">Advanced Mathematics</h4>
+                            <p class="text-sm text-slate-400 mb-3">Chapter 8: Introduction to Trigonometry</p>
+                            <div class="flex items-center gap-3">
+                                <div class="flex-1 h-2 bg-slate-700 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-indigo-500 to-gold-400 rounded-full" style="width: 65%"></div>
+                                </div>
+                                <span class="text-xs text-slate-400">65%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        @keyframes construct
+            <!-- Recent Notifications Preview -->
+            <div class="selection-card stagger-5">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="font-display text-xl font-semibold text-white">Latest Updates</h3>
+                    <div class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></div>
+                </div>
+                <div id="home-notifications" class="space-y-3">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- NOTES PAGE -->
+        <section id="page-notes" class="page px-4 py-6 max-w-lg mx-auto">
+            <div class="mb-6">
+                <h2 class="font-display text-3xl font-bold text-white mb-2">Study Notes</h2>
+                <p class="text-slate-400">Comprehensive notes for your academic success</p>
+            </div>
+
+            <!-- Selection Flow -->
+            <div id="notes-flow">
+                <!-- Step 1: Select Class -->
+                <div id="notes-step-1" class="step-container">
+                    <h3 class="text-lg font-semibold text-gold-400 mb-4 flex items-center gap-2">
+                        <span class="w-8 h-8 rounded-full bg-gold-500/20 flex items-center justify-center text-sm">1</span>
+                        Select Your Class
+                    </h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <button onclick="selectClass(9, 'notes')" class="glass-card rounded-2xl p-6 text-center ripple group hover:border-gold-400/50 transition-all">
+                   
